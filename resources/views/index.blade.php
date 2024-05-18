@@ -182,7 +182,7 @@
 
     <!-- new arrival -->
     <div class="container pb-16">
-        <h2 class="text-2xl font-medium text-gray-800 uppercase mb-6">top new arrival</h2>
+        <h2 class="text-2xl font-medium text-gray-800 uppercase mb-6">novos pratos</h2>
         <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
             <div class="bg-white shadow rounded overflow-hidden group">
                 <div class="relative">
@@ -352,17 +352,9 @@
     </div>
     <!-- ./new arrival -->
 
-    <!-- ads -->
-    <div class="container pb-16">
-        <a href="#">
-            <img src="assets/images/offer.jpg" alt="ads" class="w-full">
-        </a>
-    </div>
-    <!-- ./ads -->
-
     <!-- product -->
     <div class="container pb-16">
-        <h2 class="text-2xl font-medium text-gray-800 uppercase mb-6">recomended for you</h2>
+        <h2 class="text-2xl font-medium text-gray-800 uppercase mb-6">recomendações da casa</h2>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
             <div class="bg-white shadow rounded overflow-hidden group">
                 <div class="relative">
@@ -698,15 +690,17 @@
 
     <!-- footer -->
     <footer class="bg-white pt-16 pb-12 border-t border-gray-100">
-        <div class="container grid grid-cols-1 ">
-            <div class="col-span-1 space-y-4">
-                <img src="assets/images/logo.svg" alt="logo" class="w-30">
+        <div class="container grid grid-cols-1">
+            <div class="flex space-x-4 flex items-center justify-center">
+                <img src="assets/images/bleh.gif" alt="logo" class="w-20">
+                <img src="assets/images/falintongue.gif" alt="logo" class="w-20">
+            </div>
                 <div class="mr-2">
-                    <p class="text-gray-500">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, hic?
+                    <p class="text-gray-500 flex items-center justify-center">
+                        Dungeon Meshi. Ah Dungeon Meshi.
                     </p>
                 </div>
-                <div class="flex space-x-5">
+                <div class="flex space-x-5 flex items-center justify-center">
                     <a href="#" class="text-gray-400 hover:text-gray-500"><i
                             class="fa-brands fa-facebook-square"></i></a>
                     <a href="#" class="text-gray-400 hover:text-gray-500"><i
@@ -718,6 +712,7 @@
                     </a>
                 </div>
             </div>
+            <br>
 
             <div class="col-span-2 grid grid-cols-2 gap-4">
                 <div class="grid grid-cols-2 gap-4 md:gap-8">
@@ -770,7 +765,7 @@
     <!-- copyright -->
     <div class="bg-gray-800 py-4">
         <div class="container flex items-center justify-between">
-            <p class="text-white">&copy; TailCommerce - All Right Reserved</p>
+            <p class="text-white">&copy; DungeonCommerce - All Right Reserved</p>
             <div>
                 <img src="assets/images/methods.png" alt="methods" class="h-5">
             </div>
