@@ -132,7 +132,8 @@
             <p class="text-gray-600 mb-6 text-sm">
                 welcome back customer
             </p>
-            <form action="#" method="post" autocomplete="off">
+            <form method="POST" action="{{ route('login') }}">
+                @csrf
                 <div class="space-y-2">
                     <div>
                         <label for="email" class="text-gray-600 mb-2 block">Email address</label>
