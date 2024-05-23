@@ -115,7 +115,7 @@
                     <a href="#" class="text-gray-200 hover:text-white transition">Sobre Nós</a>
                     <a href="#" class="text-gray-200 hover:text-white transition">Contato</a>
                 </div>
-                <a href="login" class="text-gray-200 hover:text-white transition">Entrar</a>
+                <a href="profile" class="text-gray-200 hover:text-white transition">Entrar</a>
             </div>
         </div>
     </nav>
