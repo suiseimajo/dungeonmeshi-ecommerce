@@ -58,4 +58,14 @@ class ProfileController extends Controller
 
         return Redirect::to('/');
     }
+
+    public function destroyImage(Request $request): RedirectResponse
+    {
+        Storage::disk('public')->delete($request->user()->imagem);
+        $request->user()->imagem = null;
+        $request->user()->save();
+
+        session()->flash('notif.success', 'Imagem deletada com sucesso!');
+        return Redirect::route('profile.edit');
+    }
 }

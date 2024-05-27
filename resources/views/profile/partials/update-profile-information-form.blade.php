@@ -13,7 +13,7 @@
         @method('patch')
 
         <div class="flex flex-col items-center sm:flex-row sm:space-y-0">
-            <img id="image_preview" class="rounded-full w-28 h-28 border border-gray-200 p-1 object-cover ring-2 ring-indigo-300 dark:ring-indigo-500" src="{{ isset($user->imagem) ? Storage::url($user->imagem) : asset('imagens/Default_pfp.svg.png') }}" alt="Bordered avatar">
+            <img id="image_preview" class="rounded-full w-28 h-28 border border-gray-200 p-1 object-cover ring-2 ring-indigo-300 dark:ring-indigo-500" src="{{ isset($user->imagem) ? Storage::url($user->imagem) : asset('assets/images/Default_pfp.svg.png') }}" alt="Bordered avatar">
             <div class="flex flex-col sm:ml-8">
                 <label class="mb-2">
                     <span type="submit"
@@ -22,7 +22,7 @@
                     </span>
                     <input type="file" id="imagem" name="imagem" class="hidden"/>
                 </label>
-                <button form="delete-image" type="button" class="text-gray-800 font-medium">
+                <button form="delete-image" type="submit" class="text-gray-800 font-medium">
                     Deletar Foto
                 </button>
             </div>
