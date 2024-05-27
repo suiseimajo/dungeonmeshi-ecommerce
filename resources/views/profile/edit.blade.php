@@ -1,5 +1,6 @@
 <x-header>
 </x-header>
+
     <!-- breadcrumb -->
     <div class="container py-4 flex items-center gap-3">
         <a href="../index.html" class="text-primary text-base">
@@ -28,6 +29,12 @@
                     @include('profile.partials.update-profile-information-form')
                 </div>
             </div>
+
+            @if (Session::has('notif.success'))
+                <div class="bg-primary mt-2 p-4">
+                    <span class="text-white">{{ Session::get('notif.success') }}</span>
+                </div>
+            @endif
 
             <div class="mt-6 bg-white shadow rounded p-4 divide-y divide-gray-200 space-y-4 text-gray-600">
                 <div class="space-y-1 pl-8">
