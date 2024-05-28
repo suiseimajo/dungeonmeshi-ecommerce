@@ -118,7 +118,6 @@
                 <div class="space-y-1">
                     <h4 class="text-gray-700 font-medium">{{$user->name}}</h4>
                     <p class="text-gray-800">{{$user->email}}</p>
-                    <p class="text-gray-800">0811 8877 988</p>
                 </div>
             </div>
 

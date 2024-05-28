@@ -109,6 +109,7 @@
             <div class="flex items-center justify-between flex-grow pl-12">
                 <div class="flex items-center space-x-6 capitalize">
                     <a href="{{ route('home') }}" class="text-gray-200 hover:text-white transition">Início</a>
+                    <a href="{{ route('produtos.create') }}" class="text-gray-200 hover:text-white transition">Add Produto</a>
                     <a href="#" class="text-gray-200 hover:text-white transition">Comprar</a>
                     <a href="#" class="text-gray-200 hover:text-white transition">Sobre Nós</a>
                     <a href="#" class="text-gray-200 hover:text-white transition">Contato</a>
