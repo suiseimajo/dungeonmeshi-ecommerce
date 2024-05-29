@@ -26,7 +26,7 @@
     <header class="py-4 shadow-sm bg-white">
         <div class="container flex items-center justify-between">
             <a href="{{ route('home') }}">
-                <img src="assets/images/senshipoint.webp" alt="Logo" class="w-16 rounded">
+                <img src="{{ asset('images/senshipoint.webp') }}" alt="Logo" class="w-16 rounded">
             </a>
 
             <div class="w-full max-w-4xl relative flex">
