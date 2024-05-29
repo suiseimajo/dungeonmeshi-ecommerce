@@ -40,23 +40,13 @@ class ProductController extends Controller
         $product = new Product;
         $product->nome = $request->input('nome');
         $product->preco = $request->input('preco');
-        $product->save();
-
-        if ($request->hasFile('imagens')) {
-            foreach ($request->file('imagens') as $imagem) {
-                $image = new Image;
-                // salvando a imagem numa pasta
-                $filePath = Storage::disk('public')->put('images/produtos/imagens', $imagem);
-                $image->imagem = $filePath;
-                $image->product_id = $product->id;
-                $image->save();
-            }
+        if ($request->hasFile('imagem')) {
+            $filePath = Storage::disk('public')->put('images/produtos/imagens', request()->file('imagem'));
+            $product->imagem = $filePath;
         }
-
-        $product->categories()->attach($request->input('categories'));
-
+        $product->save();
         session()->flash('notif.success', 'Produto criado com sucesso!');
-        return redirect()->route('produtos.index');
+        return redirect()->route('home');
     }
 
     /**

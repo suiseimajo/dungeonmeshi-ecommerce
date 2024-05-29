@@ -9,7 +9,7 @@
 
     <link rel="shortcut icon" href="assets/images/favicon/favicon.ico" type="image/x-icon">
 
-    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,7 +26,7 @@
     <header class="py-4 shadow-sm bg-white">
         <div class="container flex items-center justify-between">
             <a href="{{ route('home') }}">
-                <img src="{{ asset('images/senshipoint.webp') }}" alt="Logo" class="w-16 rounded">
+                <img src="{{ asset('assets/images/senshipoint.webp') }}" alt="Logo" class="w-16 rounded">
             </a>
 
             <div class="w-full max-w-4xl relative flex">

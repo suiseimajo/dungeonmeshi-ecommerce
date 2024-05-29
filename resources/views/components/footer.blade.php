@@ -1,8 +1,8 @@
 <footer class="bg-white pt-16 pb-12 border-t border-gray-100">
     <div class="container grid grid-cols-1">
         <div class="flex space-x-4 flex items-center justify-center">
-            <img src="assets/images/bleh.gif" alt="logo" class="w-20">
-            <img src="assets/images/falintongue.gif" alt="logo" class="w-20">
+            <img src="{{ asset('assets/images/bleh.gif') }}" alt="logo" class="w-20">
+            <img src="{{ asset('assets/images/falintongue.gif') }}" alt="logo" class="w-20">
         </div>
             <div class="mr-2">
                 <p class="text-gray-500 flex items-center justify-center">
