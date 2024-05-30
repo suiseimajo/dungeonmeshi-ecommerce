@@ -63,7 +63,7 @@
     <div class="container pb-16">
         <h2 class="text-2xl font-medium text-gray-800 uppercase mb-6">novos pratos</h2>
         <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-        @foreach ($products as $product)
+        @foreach ($products->sortByDesc('created_at') as $product)
             <div class="bg-white shadow rounded overflow-hidden group">
                 <div class="relative">
                     <img src="{{ Storage::url($product->imagem) }}" alt="product 1" class="w-full h-48 object-cover">
@@ -87,7 +87,7 @@
                         <h4 class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">{{$product->nome}}</h4>
                     </a>
                     <div class="flex items-baseline mb-1 space-x-2">
-                        <p class="text-xl text-primary font-semibold">{{'$' . number_format($product->preco, 2) }}</p>
+                        <p class="text-xl text-primary font-semibold">{{'R$' . number_format($product->preco/100, 2, ',', '.') }}</p>
                     </div>
                     <div class="flex items-center">
                         <div class="flex gap-1 text-sm text-yellow-400">
@@ -101,8 +101,7 @@
                     </div>
                 </div>
                 <a href="#"
-                    class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Add
-                    to cart</a>
+                    class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Adicionar ao Carrinho</a>
             </div>
         @endforeach
         </div>
