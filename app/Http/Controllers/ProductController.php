@@ -67,7 +67,7 @@ class ProductController extends Controller
     public function edit(string $id)
     {
         $product = Product::find($id);
-        return view('produtos.edit', compact('products'));
+        return view('produtos.index', compact('product'));
 
     }
 
@@ -79,8 +79,6 @@ class ProductController extends Controller
         $product = Product::find($id);
         $product->nome = $request->input('nome');
         $product->preco = $request->input('preco');
-        $product->preco_antigo = $request->input('preco_antigo') ?? '';
-        $product->descricao = $request->input('descricao');
 
         if ($request->hasFile('imagem')) {
             // deletando a imagem
@@ -91,7 +89,6 @@ class ProductController extends Controller
         }
 
         $product->update();
-        $product->categories()->sync($request->input('categories'));
 
         session()->flash('notif.success', 'Produto editado com sucesso!');
         return redirect()->route('produtos.index');
@@ -106,7 +103,6 @@ class ProductController extends Controller
         foreach ($product->images as $image) {
             Storage::disk('public')->delete($image);
         }
-        $product->categories()->detach();
         $product->ratings()->delete();
         $product->images()->delete();
         $product->delete();

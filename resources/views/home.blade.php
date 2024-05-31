@@ -79,6 +79,11 @@
                             title="add to wishlist">
                             <i class="fa-solid fa-heart"></i>
                         </a>
+                        <a href="{{ route('produtos.edit', $product->id )}}"
+                            class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
+                            title="edit">
+                            <i class="fa-solid fa-pen"></i>
+                        </a>
                     </div>
                 </div>
             

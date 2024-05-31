@@ -59,11 +59,49 @@
                         class="absolute -right-3 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-primary text-white text-xs">
                         2</div>
                 </a>
+            @if (Route::has('login'))
+                @auth
+                <div class="hidden sm:flex sm:items-center sm:ms-6">
+                    <x-dropdown align="right" width="48">
+                        <x-slot name="trigger">
+                            <button class="flex items-center space-x-2 cursor-pointer">
+                                <img class="h-12 w-12 rounded-full object-cover" src="{{ isset(Auth::user()->imagem) ? Storage::url(Auth::user()->imagem) : asset('imagens/Default_pfp.svg.png') }}" alt="Bordered avatar">
+                                <div class="ms-1">
+                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                            </button>
+                        </x-slot>
+
+                        <x-slot name="content">
+                        
+                        
+                            <x-dropdown-link :href="route('profile.edit')">
+                                {{ __('Profile') }}
+                            </x-dropdown-link>
+    
+                            <!-- Authentication -->
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+    
+                                <x-dropdown-link :href="route('logout')"
+                                        onclick="event.preventDefault();
+                                                    this.closest('form').submit();">
+                                    {{ __('Sair') }}
+                                </x-dropdown-link>
+                            </form>
+                        </x-slot>
+                    </x-dropdown>
+                </div>
+            @else
                 <a href="{{ route('profile.edit') }}" class="text-center text-gray-700 hover:text-primary transition relative">
                     <div class="text-2xl">
                         <i class="fa-regular fa-user"></i>
                     </div>
                     <div class="text-xs leading-3">Conta</div>
+                @endauth
+            @endif
                 </a>
             </div>
         </div>
@@ -109,7 +147,6 @@
                 <div class="flex items-center space-x-6 capitalize">
                     <a href="{{ route('home') }}" class="text-gray-200 hover:text-white transition">Início</a>
                     <a href="{{ route('produtos.create') }}" class="text-gray-200 hover:text-white transition">Add Produto</a>
-                    <a href="#" class="text-gray-200 hover:text-white transition">Editar Produto</a>
                     <a href="#" class="text-gray-200 hover:text-white transition">Comprar</a>
                     <a href="#" class="text-gray-200 hover:text-white transition">Sobre Nós</a>
                     <a href="#" class="text-gray-200 hover:text-white transition">Contato</a>
