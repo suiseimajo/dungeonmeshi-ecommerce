@@ -18,7 +18,7 @@
         rel="stylesheet">
 
     <link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-free/css/all.min.css">
-    @vite('resources/css/app.css')
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body>
@@ -75,10 +75,14 @@
                         </x-slot>
 
                         <x-slot name="content">
+
+                            <x-dropdown-link :href="route('produtos.create')">
+                                {{ __('Adicionar Produto') }}
+                            </x-dropdown-link>
                         
                         
                             <x-dropdown-link :href="route('profile.edit')">
-                                {{ __('Profile') }}
+                                {{ __('Perfil') }}
                             </x-dropdown-link>
     
                             <!-- Authentication -->
@@ -146,7 +150,6 @@
             <div class="flex items-center justify-between flex-grow pl-12">
                 <div class="flex items-center space-x-6 capitalize">
                     <a href="{{ route('home') }}" class="text-gray-200 hover:text-white transition">Início</a>
-                    <a href="{{ route('produtos.create') }}" class="text-gray-200 hover:text-white transition">Add Produto</a>
                     <a href="#" class="text-gray-200 hover:text-white transition">Comprar</a>
                     <a href="#" class="text-gray-200 hover:text-white transition">Sobre Nós</a>
                     <a href="#" class="text-gray-200 hover:text-white transition">Contato</a>
