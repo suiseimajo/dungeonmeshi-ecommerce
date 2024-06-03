@@ -21,6 +21,11 @@
                                 <x-input-error class="mt-2" :messages="$errors->get('preco')" />
                             </div>
 
+                            <div>
+                                <x-input-label for="descricao" value="Descrição" />
+                                <textarea wire:model="descricao" name="descricao" class="resize rounded-md" style="width: 100%; height: 256px;"></textarea>
+                            </div>
+
                                 <x-input-error class="mt-2" :messages="$errors->get('featured_image')" />
                             </div>
 

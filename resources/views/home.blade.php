@@ -88,7 +88,7 @@
                 </div>
             
                 <div class="pt-4 pb-3 px-4">
-                    <a href="#">
+                    <a href="{{ route('product-page', $product->id )}}">
                         <h4 class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">{{$product->nome}}</h4>
                     </a>
                     <div class="flex items-baseline mb-1 space-x-2">

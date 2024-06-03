@@ -6,22 +6,27 @@
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 text-gray-900">
                         {{-- don't forget to add multipart/form-data so we can accept file in our form --}}
-                        <form method="post" action="{{ isset($product) ? route('produtos.update', $product->id) : route('produtos.store') }}" class="mt-6 space-y-6" enctype="multipart/form-data">
+                        <form method="post" action="{{ isset($products) ? route('produtos.update', $product->id) : route('produtos.store') }}" class="mt-6 space-y-6" enctype="multipart/form-data">
                             @csrf
-                            @if(isset($product))
+                            @if(isset($products))
                                 @method('PUT')
                             @endif
 
                             <div>
                                 <x-input-label for="nome" value="Nome" />
-                                <x-text-input wire:model="nome" id="nome" name="nome" type="text" class="mt-1 block w-full" :value="old('nome')" required autofocus />
+                                <x-text-input id="nome" name="nome" type="text" class="mt-1 block w-full" :value="old('nome')" required autofocus />
                                 <x-input-error class="mt-2" :messages="$errors->get('title')" />
                             </div>
 
                             <div>
                                 <x-input-label for="preco" value="Preço" />
-                                <x-text-input wire:model="preco" id="preco" name="preco" class="mt-1 block w-full" required autofocus />
+                                <x-text-input id="preco" name="preco" class="mt-1 block w-full" required autofocus />
                                 <x-input-error class="mt-2" :messages="$errors->get('preco')" />
+                            </div>
+
+                            <div>
+                                <x-input-label for="descricao" value="Descrição" />
+                                <textarea name="descricao" class="resize rounded-md" style="width: 100%; height: 256px;"></textarea>
                             </div>
 
                                 <x-input-error class="mt-2" :messages="$errors->get('featured_image')" />

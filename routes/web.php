@@ -16,3 +16,5 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Route::get('/produto/{id}', [ProductController::class, 'product'])->name('product-page');
