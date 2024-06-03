@@ -37,14 +37,14 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $products = new Product;
-        $products->nome = $request->input('nome');
-        $products->preco = $request->input('preco');
+        $product = new Product;
+        $product->nome = $request->input('nome');
+        $product->preco = $request->input('preco');
         if ($request->hasFile('imagem')) {
             $filePath = Storage::disk('public')->put('images/produtos/imagens', request()->file('imagem'));
-            $products->imagem = $filePath;
+            $product->imagem = $filePath;
         }
-        $products->save();
+        $product->save();
         session()->flash('notif.success', 'Produto criado com sucesso!');
         return redirect()->route('home');
     }
@@ -56,7 +56,7 @@ class ProductController extends Controller
     
     {
         
-        $products = Product::find($id);
+        $product = Product::find($id);
         return view('produtos.show', compact('products'));
     }
     
@@ -66,8 +66,8 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        $products = Product::find($id);
-        return view('produtos.index', compact('products'));
+        $product = Product::find($id);
+        return view('produtos.edit', compact('product'));
 
     }
 
@@ -76,20 +76,20 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $products = Product::find($id);
-        $products->nome = $request->input('nome');
-        $products->preco = $request->input('preco');
-        $products->preco = $request->input('descricao');
+        $product = Product::find($id);
+        $product->nome = $request->input('nome');
+        $product->preco = $request->input('preco');
+        $product->preco = $request->input('descricao');
 
         if ($request->hasFile('imagem')) {
             // deletando a imagem
 
             // salvando a imagem numa pasta
            $filePath = Storage::disk('public')->put('images/produtos/imagens', request()->file('imagem'));
-           $products->imagem = $filePath;
+           $product->imagem = $filePath;
         }
 
-        $products->update();
+        $product->update();
 
         session()->flash('notif.success', 'Produto editado com sucesso!');
         return redirect()->route('produtos.index');
@@ -100,13 +100,13 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        $products = Product::find($id);
-        foreach ($products->images as $image) {
+        $product = Product::find($id);
+        foreach ($product->images as $image) {
             Storage::disk('public')->delete($image);
         }
-        $products->ratings()->delete();
-        $products->images()->delete();
-        $products->delete();
+        $product->ratings()->delete();
+        $product->images()->delete();
+        $product->delete();
 
         session()->flash('notif.success', 'Produto deletado com sucesso!');
         return redirect()->route('produtos.index');

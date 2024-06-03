@@ -14,13 +14,13 @@
 
                             <div>
                                 <x-input-label for="nome" value="Nome" />
-                                <x-text-input id="nome" name="nome" type="text" class="mt-1 block w-full" :value="old('nome')" required autofocus />
+                                <x-text-input id="nome" name="nome" type="text" class="mt-1 block w-full" :value="old('nome', $product->nome)" required autofocus />
                                 <x-input-error class="mt-2" :messages="$errors->get('title')" />
                             </div>
 
                             <div>
                                 <x-input-label for="preco" value="Preço" />
-                                <x-text-input id="preco" name="preco" class="mt-1 block w-full" required autofocus />
+                                <x-text-input id="preco" name="preco" class="mt-1 block w-full" :value="old('preco', 'R$' . number_format($product->preco/100, 2, ',', '.'))" required autofocus />
                                 <x-input-error class="mt-2" :messages="$errors->get('preco')" />
                             </div>
 
