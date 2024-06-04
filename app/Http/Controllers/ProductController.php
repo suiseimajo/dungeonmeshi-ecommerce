@@ -19,7 +19,7 @@ class ProductController extends Controller
     {
         $products = Product::all();
 
-        return view('produtos.index', compact('products'));
+        return view('home', compact('products'));
     }
 
     /**
@@ -59,7 +59,7 @@ class ProductController extends Controller
     {
         
         $product = Product::find($id);
-        return view('produtos.show', compact('products'));
+        return view('produtos.show', compact('product'));
     }
     
 
@@ -78,9 +78,10 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $preco = preg_replace("/[^0-9]/", "", $request->input('preco'));
         $product = Product::find($id);
         $product->nome = $request->input('nome');
-        $product->preco = $request->input('preco');
+        $product->preco = $preco;
         $product->descricao = $request->input('descricao');
 
         if ($request->hasFile('imagem')) {
@@ -94,7 +95,7 @@ class ProductController extends Controller
         $product->update();
 
         session()->flash('notif.success', 'Produto editado com sucesso!');
-        return redirect()->route('produtos.index');
+        return redirect()->route('home');
     }
 
     /**

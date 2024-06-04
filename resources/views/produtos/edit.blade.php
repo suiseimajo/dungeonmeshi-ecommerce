@@ -6,7 +6,7 @@
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 text-gray-900">
                         {{-- don't forget to add multipart/form-data so we can accept file in our form --}}
-                        <form method="patch" action="{{ isset($product) ? route('produtos.update', $product->id) : route('produtos.store') }}" class="mt-6 space-y-6" enctype="multipart/form-data">
+                        <form method="post" action="{{ isset($product) ? route('produtos.update', $product->id) : route('produtos.store') }}" class="mt-6 space-y-6" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
 
