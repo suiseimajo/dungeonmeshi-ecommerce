@@ -40,11 +40,13 @@ class ProductController extends Controller
         $product = new Product;
         $product->nome = $request->input('nome');
         $product->preco = $request->input('preco');
+        $product->descricao = $request->input('descricao');
         if ($request->hasFile('imagem')) {
             $filePath = Storage::disk('public')->put('images/produtos/imagens', request()->file('imagem'));
             $product->imagem = $filePath;
         }
         $product->save();
+
         session()->flash('notif.success', 'Produto criado com sucesso!');
         return redirect()->route('home');
     }
@@ -79,7 +81,7 @@ class ProductController extends Controller
         $product = Product::find($id);
         $product->nome = $request->input('nome');
         $product->preco = $request->input('preco');
-        $product->preco = $request->input('descricao');
+        $product->descricao = $request->input('descricao');
 
         if ($request->hasFile('imagem')) {
             // deletando a imagem

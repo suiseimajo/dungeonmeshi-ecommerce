@@ -6,16 +6,14 @@
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 text-gray-900">
                         {{-- don't forget to add multipart/form-data so we can accept file in our form --}}
-                        <form method="post" action="{{ isset($products) ? route('produtos.update', $product->id) : route('produtos.store') }}" class="mt-6 space-y-6" enctype="multipart/form-data">
+                        <form method="patch" action="{{ isset($product) ? route('produtos.update', $product->id) : route('produtos.store') }}" class="mt-6 space-y-6" enctype="multipart/form-data">
                             @csrf
-                            @if(isset($products))
-                                @method('PUT')
-                            @endif
+                            @method('PUT')
 
                             <div>
                                 <x-input-label for="nome" value="Nome" />
                                 <x-text-input id="nome" name="nome" type="text" class="mt-1 block w-full" :value="old('nome', $product->nome)" required autofocus />
-                                <x-input-error class="mt-2" :messages="$errors->get('title')" />
+                                <x-input-error class="mt-2" :messages="$errors->get('nome')" />
                             </div>
 
                             <div>
@@ -26,7 +24,8 @@
 
                             <div>
                                 <x-input-label for="descricao" value="Descrição" />
-                                <textarea name="descricao" class="resize rounded-md" style="width: 100%; height: 256px;"></textarea>
+                                <textarea name="descricao" class="resize rounded-md" :value="old('descricao', $product->descricao)" style="width: 100%; height: 256px;"></textarea>
+                                <x-input-error class="mt-2" :messages="$errors->get('descricao')" />
                             </div>
 
                                 <x-input-error class="mt-2" :messages="$errors->get('featured_image')" />
