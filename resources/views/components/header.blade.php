@@ -151,7 +151,7 @@
                 <div class="flex items-center space-x-6 capitalize">
                     <a href="{{ route('home') }}" class="text-gray-200 hover:text-white transition">Início</a>
                     <a href="#" class="text-gray-200 hover:text-white transition">Comprar</a>
-                    <a href="#" class="text-gray-200 hover:text-white transition">Sobre Nós</a>
+                    <a href="{{ route('about') }}" class="text-gray-200 hover:text-white transition">Sobre Nós</a>
                     <a href="#" class="text-gray-200 hover:text-white transition">Contato</a>
                 </div>
             @if(Auth::check())
