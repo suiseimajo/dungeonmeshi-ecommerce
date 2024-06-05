@@ -152,7 +152,7 @@
                     <a href="{{ route('home') }}" class="text-gray-200 hover:text-white transition">Início</a>
                     <a href="#" class="text-gray-200 hover:text-white transition">Comprar</a>
                     <a href="{{ route('about') }}" class="text-gray-200 hover:text-white transition">Sobre Nós</a>
-                    <a href="#" class="text-gray-200 hover:text-white transition">Contato</a>
+                    <a href="{{ route('contact-page') }}" class="text-gray-200 hover:text-white transition">Contato</a>
                 </div>
             @if(Auth::check())
                 <form method="POST" action="{{ route('logout') }}">
