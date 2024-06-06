@@ -107,7 +107,6 @@ class ProductController extends Controller
         foreach ($product->images as $image) {
             Storage::disk('public')->delete($image);
         }
-        $product->ratings()->delete();
         $product->images()->delete();
         $product->delete();
 

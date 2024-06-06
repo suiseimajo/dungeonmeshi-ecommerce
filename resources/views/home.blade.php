@@ -1,5 +1,10 @@
 <x-header>
 </x-header>
+@if (Session::has('notif.success'))
+    <div class="bg-primary mt-2 p-4">
+        <span class="text-white">{{ Session::get('notif.success') }}</span>
+    </div>
+@endif
     <!-- banner -->
     <div class="bg-cover bg-no-repeat bg-center py-36" style="background-image: url('assets/images/marcille.jpg');">
         <div class="container">
@@ -84,6 +89,15 @@
                             title="edit">
                             <i class="fa-solid fa-pen"></i>
                         </a>
+                    <form action="{{ route('produtos.destroy', $product->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit"
+                            class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
+                            title="delete">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </form>
                     </div>
                 </div>
             
