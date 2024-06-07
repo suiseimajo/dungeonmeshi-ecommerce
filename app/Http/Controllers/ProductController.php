@@ -104,14 +104,11 @@ class ProductController extends Controller
     public function destroy(string $id)
     {
         $product = Product::find($id);
-        foreach ($product->images as $image) {
-            Storage::disk('public')->delete($image);
-        }
-        $product->images()->delete();
+        Storage::disk('public')->delete($product->imagem);
         $product->delete();
 
         session()->flash('notif.success', 'Produto deletado com sucesso!');
-        return redirect()->route('produtos.index');
+        return redirect()->route('home');
 
     }
 
