@@ -79,6 +79,10 @@
                             <x-dropdown-link :href="route('produtos.create')">
                                 {{ __('Adicionar Produto') }}
                             </x-dropdown-link>
+
+                            <x-dropdown-link :href="route('categorias.create')">
+                                {{ __('Adicionar Categoria') }}
+                            </x-dropdown-link>
                         
                         
                             <x-dropdown-link :href="route('profile.edit')">

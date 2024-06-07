@@ -3,6 +3,7 @@
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
@@ -15,6 +16,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::delete('/profile/imagem', [ProfileController::class, 'destroyImage'])->name('profile.destroy-image');
     Route::resource('produtos', ProductController::class);
+    Route::resource('categorias', CategoryController::class);
 });
 
 require __DIR__.'/auth.php';

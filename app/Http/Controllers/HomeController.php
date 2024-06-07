@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
+use App\Models\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Product;
 
 class HomeController extends Controller
 {
@@ -13,7 +14,9 @@ class HomeController extends Controller
     {
 
         $products = Product::all();
-        return view('home', compact('products'));
+        $categories = Category::all();
+
+        return view('home', compact('products', 'categories'));
 
     }
 }
