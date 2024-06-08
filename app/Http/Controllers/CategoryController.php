@@ -58,9 +58,9 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $slug)
+    public function edit(string $id)
     {
-        $category = Category::where('slug', $slug)->first();
+        $category = Category::find($id);
         return view('categorias.edit', compact('category'));
     }
 
