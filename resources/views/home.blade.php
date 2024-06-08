@@ -47,8 +47,35 @@
             @foreach ($categories as $category)
             <div class="relative rounded-sm overflow-hidden group">
                 <img src="{{ Storage::url($category->imagem) }}" alt="category 1" class="h-full object-cover">
-                <a href="{{ route('categorias.edit', $category->id )}}"
+                <a href="#"
                     class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">{{$category->nome}}</a>
+                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center 
+                    justify-center gap-2 opacity-0 group-hover:opacity-100 transition">
+                        <a href="#"
+                            class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
+                            title="view product">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </a>
+                        <a href="#"
+                            class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
+                            title="add to wishlist">
+                            <i class="fa-solid fa-heart"></i>
+                        </a>
+                        <a href="{{ route('categorias.edit', $category->id )}}"
+                            class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
+                            title="edit">
+                            <i class="fa-solid fa-pen"></i>
+                        </a>
+                    <form action="{{ route('categorias.destroy', $category->id) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit"
+                        class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
+                        title="delete">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                    </form>
+                </div>
             </div>
             @endforeach
         </div>
@@ -110,8 +137,7 @@
                         <div class="text-xs text-gray-500 ml-3">(150)</div>
                     </div>
                 </div>
-                <a href="#"
-                    class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Adicionar ao Carrinho</a>
+                <a href="#"class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Adicionar ao Carrinho</a>
             </div>
         @endforeach
         </div>
