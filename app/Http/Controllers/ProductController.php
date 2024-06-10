@@ -39,6 +39,7 @@ class ProductController extends Controller
     {
         $product = new Product;
         $product->nome = $request->input('nome');
+        $product->slug = Str::slug($request->input('nome'));
         $product->preco = $request->input('preco');
         $product->descricao = $request->input('descricao');
         if ($request->hasFile('imagem')) {
@@ -112,11 +113,10 @@ class ProductController extends Controller
 
     }
 
-    public function product($id)
+    public function product(string $slug)
     {
+        $product = Product::where('slug', $slug)->first();
 
-        $products = Product::findOrFail($id);
-        return view('product-page', compact('products'));
-
+        return view('product-page', compact('product'));
     }
 }

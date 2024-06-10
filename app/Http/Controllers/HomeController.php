@@ -19,4 +19,11 @@ class HomeController extends Controller
         return view('home', compact('products', 'categories'));
 
     }
+
+    public function product(string $slug){
+        $product = Product::where('slug', $slug)->first();
+
+        return view('product-page', compact('product'));
+
+    }
 }

@@ -15,11 +15,11 @@
     <!-- product-detail -->
     <div class="container grid grid-cols-2 gap-6">
         <div>
-            <img src="{{ Storage::url($products->imagem) }}" alt="product" class="w-full">
+            <img src="{{ Storage::url($product->imagem) }}" alt="product" class="w-full">
         </div>
 
         <div>
-            <h2 class="text-3xl font-medium uppercase mb-2">{{$products->nome}}</h2>
+            <h2 class="text-3xl font-medium uppercase mb-2">{{$product->nome}}</h2>
             <div class="flex items-center mb-4">
                 <div class="flex gap-1 text-sm text-yellow-400">
                     <span><i class="fa-solid fa-star"></i></span>
@@ -37,10 +37,10 @@
                 </p>
             </div>
             <div class="flex items-baseline mb-1 space-x-2 font-roboto mt-4">
-                <p class="text-xl text-primary font-semibold">{{'R$' . number_format($products->preco/100, 2, ',', '.') }}</p>
+                <p class="text-xl text-primary font-semibold">{{'R$' . number_format($product->preco/100, 2, ',', '.') }}</p>
             </div>
 
-            <p class="mt-4 text-gray-600">{{$products->descricao}}</p>
+            <p class="mt-4 text-gray-600">{{$product->descricao}}</p>
 
             <div class="mt-4">
                 <h3 class="text-sm text-gray-800 uppercase mb-1">Quantidade</h3>

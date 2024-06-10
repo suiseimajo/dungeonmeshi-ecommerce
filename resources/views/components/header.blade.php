@@ -76,14 +76,10 @@
 
                         <x-slot name="content">
 
-                            <x-dropdown-link :href="route('produtos.create')">
-                                {{ __('Adicionar Produto') }}
+                            <x-dropdown-link :href="route('dashboard')">
+                                {{ __('Painel') }}
                             </x-dropdown-link>
 
-                            <x-dropdown-link :href="route('categorias.create')">
-                                {{ __('Adicionar Categoria') }}
-                            </x-dropdown-link>
-                        
                         
                             <x-dropdown-link :href="route('profile.edit')">
                                 {{ __('Perfil') }}
@@ -154,7 +150,7 @@
             <div class="flex items-center justify-between flex-grow pl-12">
                 <div class="flex items-center space-x-6 capitalize">
                     <a href="{{ route('home') }}" class="text-gray-200 hover:text-white transition">Início</a>
-                    <a href="#" class="text-gray-200 hover:text-white transition">Comprar</a>
+                    <a href="#produtos" class="text-gray-200 hover:text-white transition">Comprar</a>
                     <a href="{{ route('about') }}" class="text-gray-200 hover:text-white transition">Sobre Nós</a>
                     <a href="{{ route('contact-page') }}" class="text-gray-200 hover:text-white transition">Contato</a>
                 </div>
