@@ -34,7 +34,7 @@
                     @foreach ($products as $product)
                         <tr>
                           <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-white sm:pl-0">{{$product->nome}}
-                          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-300">{{'R$' . number_format($product->preco, 2)}}</td>
+                          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-300">{{'R$' . number_format($product->preco/100, 2, ',', '.') }}</td>
                           <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-300"><img src="{{ Storage::url($product->imagem) }}" alt="product 1" class="w-40 h-24 object-cover"></td>
                           <td class="relative whitespace-nowrap py-4 pl-100 pr-4 text-sm font-medium sm:pr-0">
                             <a href="{{route('produtos.show', $product->id)}}" class="text-indigo-400 hover:text-indigo-300">Exibir<span class="sr-only">Exibir</span></a>
