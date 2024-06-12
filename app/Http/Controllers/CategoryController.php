@@ -17,7 +17,7 @@ class CategoryController extends Controller
     {
         $categories = Category::all();
 
-        return view('home', compact('categories'));
+        return view('categorias.index', compact('categories'));
 
         
     }
@@ -54,6 +54,13 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      */
+
+     public function show(string $id)
+     {
+ 
+         $category = Category::where('id', $id)->first();
+         return view('categorias.show', compact('category'));
+     }
 
     /**
      * Show the form for editing the specified resource.

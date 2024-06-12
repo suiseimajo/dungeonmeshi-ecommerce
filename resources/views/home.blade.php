@@ -61,20 +61,6 @@
                             title="add to wishlist">
                             <i class="fa-solid fa-heart"></i>
                         </a>
-                        <a href="{{ route('categorias.edit', $category->id )}}"
-                            class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
-                            title="edit">
-                            <i class="fa-solid fa-pen"></i>
-                        </a>
-                    <form action="{{ route('categorias.destroy', $category->id) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit"
-                        class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
-                        title="delete">
-                        <i class="fa-solid fa-trash"></i>
-                    </button>
-                    </form>
                 </div>
             </div>
             @endforeach
@@ -102,20 +88,6 @@
                             title="add to wishlist">
                             <i class="fa-solid fa-heart"></i>
                         </a>
-                        <a href="{{ route('produtos.edit', $product->id )}}"
-                            class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
-                            title="edit">
-                            <i class="fa-solid fa-pen"></i>
-                        </a>
-                    <form action="{{ route('produtos.destroy', $product->id) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit"
-                            class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
-                            title="delete">
-                            <i class="fa-solid fa-trash"></i>
-                        </button>
-                    </form>
                     </div>
                 </div>
             
