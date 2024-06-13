@@ -31,6 +31,20 @@ class UserController extends Controller
 
     }
 
+    public function update(Request $request, string $id)
+    {
+        $user = User::find($id);
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->password = $request->input('password');
+
+        $user->update();
+
+        session()->flash('notif.success', 'Usuário editado com sucesso!');
+        return redirect()->route('usuarios.index');
+
+    }
+
     public function show(string $id)
     
     {

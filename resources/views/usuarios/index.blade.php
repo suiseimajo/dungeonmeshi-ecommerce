@@ -35,8 +35,8 @@
                           <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-300"><img src="{{ isset($user->imagem) ? Storage::url($user->imagem) : asset('imagens/Default_pfp.svg.png') }}" alt="product 1" class="w-20 h-20 object-cover"></td>
                           <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-white sm:pl-0">{{$user->email}}
                           <td class="relative whitespace-nowrap py-4 pl-100 pr-4 text-sm font-medium sm:pr-0">
-                            <a href="#" class="text-indigo-400 hover:text-indigo-300 mr-2">Exibir<span class="sr-only">Exibir</span></a>
-                            <a href="#" class="text-indigo-400 hover:text-indigo-300 mr-2">Editar<span class="sr-only">Editar</span></a>
+                            <a href="{{route('usuarios.show', $user->id)}}" class="text-indigo-400 hover:text-indigo-300 mr-2">Exibir<span class="sr-only">Exibir</span></a>
+                            <a href="{{route('usuarios.edit', $user->id)}}" class="text-indigo-400 hover:text-indigo-300 mr-2">Editar<span class="sr-only">Editar</span></a>
                             <form method="post" action="#" class="inline">
                               @csrf
                               @method('delete')
