@@ -21,7 +21,20 @@ class UserController extends Controller
     public function create()
     {
     
-        return view('usuarios.create', compact('users'));
+        return view('usuarios.create');
+    }
+
+    public function store(Request $request)
+    {
+        $user = new User;
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->password = $request->input('password');
+
+        $user->save();
+
+        session()->flash('notif.success', 'Usuário criado com sucesso!');
+        return redirect()->route('usuarios.index');
     }
 
     public function edit(string $id)

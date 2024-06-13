@@ -37,7 +37,7 @@
                           <td class="relative whitespace-nowrap py-4 pl-100 pr-4 text-sm font-medium sm:pr-0">
                             <a href="{{route('usuarios.show', $user->id)}}" class="text-indigo-400 hover:text-indigo-300 mr-2">Exibir<span class="sr-only">Exibir</span></a>
                             <a href="{{route('usuarios.edit', $user->id)}}" class="text-indigo-400 hover:text-indigo-300 mr-2">Editar<span class="sr-only">Editar</span></a>
-                            <form method="post" action="#" class="inline">
+                            <form method="post" action="{{ route('usuarios.destroy', $user->id) }}" class="inline">
                               @csrf
                               @method('delete')
                               <button type="submit" class="text-indigo-400 hover:text-indigo-300 ml-4">Deletar<span class="sr-only">Deletar</span></button>
