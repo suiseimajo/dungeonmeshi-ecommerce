@@ -44,13 +44,10 @@
                         </span>
                         Gerenciar Conta
                     </a>
-                    <a href="#" class="relative hover:text-primary block transition">
+                    <a href="{{route('usuarios.show', $user->id)}}" class="relative hover:text-primary block transition">
                         Informação de Perfil
                     </a>
-                    <a href="#" class="relative hover:text-primary block capitalize transition">
-                        Gerenciar Endereços
-                    </a>
-                    <a href="#" class="relative hover:text-primary block capitalize transition">
+                    <a href="{{route('usuarios.edit', $user->id)}}" class="relative hover:text-primary block capitalize transition">
                         Alterar Senha
                     </a>
                 </div>
