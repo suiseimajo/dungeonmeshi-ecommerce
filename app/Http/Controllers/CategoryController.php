@@ -106,4 +106,11 @@ class CategoryController extends Controller
         session()->flash('notif.success', 'Categoria deletada com sucesso!');
         return redirect()->route('categorias.index');
     }
+
+    public function category(string $id)
+    {
+        $category = Category::where('id', $id)->first();
+
+        return view('category-page', compact('category'));
+    }
 }

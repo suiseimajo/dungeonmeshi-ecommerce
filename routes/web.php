@@ -28,3 +28,4 @@ require __DIR__.'/auth.php';
 Route::get('/sobre', [AboutController::class, 'about'])->name('about');
 Route::get('/contato', [ContactController::class, 'contact'])->name('contact-page');
 Route::get('/produto/{slug}', [ProductController::class, 'product'])->name('product-page');
+Route::get('/categoria/{id}', [CategoryController::class, 'category'])->name('category-page');

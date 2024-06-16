@@ -26,4 +26,11 @@ class HomeController extends Controller
         return view('product-page', compact('product'));
 
     }
+
+    public function category(string $id){
+        $category = Category::where('id', $id)->first();
+
+        return view('category-page', compact('category'));
+
+    }
 }
