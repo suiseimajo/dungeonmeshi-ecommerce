@@ -9,6 +9,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
+use App\Livewire\SearchPage;
 
 Route::get('/', [HomeController::class, 'index'])->name('home'); 
 
@@ -29,3 +30,4 @@ Route::get('/sobre', [AboutController::class, 'about'])->name('about');
 Route::get('/contato', [ContactController::class, 'contact'])->name('contact-page');
 Route::get('/produto/{slug}', [ProductController::class, 'product'])->name('product-page');
 Route::get('/categoria/{id}', [CategoryController::class, 'category'])->name('category-page');
+Route::get('/busca', SearchPage::class)->name('search-page');

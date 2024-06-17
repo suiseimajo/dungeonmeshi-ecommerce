@@ -30,14 +30,16 @@
             </a>
 
             <div class="w-full max-w-4xl relative flex">
-                <span class="absolute left-4 top-3 text-lg text-gray-400">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </span>
+            <form class="md:flex w-1/2 mx-auto flex-grow" action="{{ route('search-page') }}" method="GET">
                 <input type="text" name="search" id="search"
                     class="w-full border border-primary border-r-0 pl-12 py-3 pr-3 rounded-l-md focus:outline-none hidden md:flex"
-                    placeholder="busca">
+                placeholder="busca">
                 <button
-                    class="bg-primary border border-primary text-white px-8 rounded-r-md hover:bg-transparent hover:text-primary transition hidden md:flex py-3">Busca</button>
+                    type="submit"
+                    class="bg-primary border border-primary text-white px-8 rounded-r-md hover:bg-transparent hover:text-primary transition hidden md:flex items-center">
+                    Busca
+                </button>
+            </form>
             </div>
 
             <div class="flex items-center space-x-4">
@@ -151,6 +153,7 @@
                 <div class="flex items-center space-x-6 capitalize">
                     <a href="{{ route('home') }}" class="text-gray-200 hover:text-white transition">Início</a>
                     <a href="#produtos" class="text-gray-200 hover:text-white transition">Comprar</a>
+                    <a href="{{ route('search-page') }}" class="text-gray-200 hover:text-white transition">Busca</a>
                     <a href="{{ route('about') }}" class="text-gray-200 hover:text-white transition">Sobre Nós</a>
                     <a href="{{ route('contact-page') }}" class="text-gray-200 hover:text-white transition">Contato</a>
                 </div>

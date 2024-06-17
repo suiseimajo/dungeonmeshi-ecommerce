@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Image;
+use App\Models\Category;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -118,5 +119,22 @@ class ProductController extends Controller
         $product = Product::where('slug', $slug)->first();
 
         return view('product-page', compact('product'));
+    }
+
+    public function search (Request $request)
+
+    {
+        
+        $search = $request->input('search');
+        $results = Product::where('nome', 'LIKE', '%'.$search.'%')
+                    ->orWhereHas('categories', function ($query) use ($search) {
+                        $query->where('nome', 'LIKE', '%'.$search.'%')
+                              ->orWhere('slug', 'LIKE', '%'.$search.'%');
+                    })
+                    ->get();
+        $categories = Category::whereHas('products', function ($query) use ($results) {
+            $query->whereIn('product_id', $results->pluck('id'));
+        })->get();
+        return view('search', compact('categories', 'results'));
     }
 }
