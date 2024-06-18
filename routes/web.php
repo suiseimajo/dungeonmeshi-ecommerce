@@ -10,6 +10,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\SearchPage;
+use App\Livewire\CreateProduct;
 
 Route::get('/', [HomeController::class, 'index'])->name('home'); 
 
@@ -19,7 +20,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::delete('/profile/imagem', [ProfileController::class, 'destroyImage'])->name('profile.destroy-image');
-    Route::resource('produtos', ProductController::class);
+    Route::get('/produtos/create', CreateProduct::class)->name('produtos.create');
+    Route::resource('produtos', ProductController::class)->except(['create']);
     Route::resource('categorias', CategoryController::class);
     Route::resource('usuarios', UserController::class);
 });
