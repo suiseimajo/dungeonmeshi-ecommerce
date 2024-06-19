@@ -11,6 +11,7 @@ use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\SearchPage;
 use App\Livewire\CreateProduct;
+use App\Livewire\EditProduct;
 
 Route::get('/', [HomeController::class, 'index'])->name('home'); 
 
@@ -21,7 +22,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::delete('/profile/imagem', [ProfileController::class, 'destroyImage'])->name('profile.destroy-image');
     Route::get('/produtos/create', CreateProduct::class)->name('produtos.create');
-    Route::resource('produtos', ProductController::class)->except(['create']);
+    Route::get('/produtos/{id}/edit', EditProduct::class)->name('produtos.edit');
+    Route::resource('produtos', ProductController::class)->except(['create', 'edit']);
     Route::resource('categorias', CategoryController::class);
     Route::resource('usuarios', UserController::class);
 });

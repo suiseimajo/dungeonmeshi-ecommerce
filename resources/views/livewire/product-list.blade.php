@@ -6,7 +6,7 @@
         @foreach ($products->sortByDesc('created_at') as $product)
             <div wire:key="{{ $product->id }}" class="bg-white shadow rounded overflow-hidden group">
                 <div class="relative">
-                    <img src="{{ Storage::url($product->imagem) }}" alt="product 1" class="w-full h-48 object-cover">
+                    <img src="{{ $product->images->first() ? Storage::url($product->images->first()->imagem) : asset('imagens/470.jpg') }}" alt="{{$product->nome}}" class="w-full h-64 object-cover">
                     <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center 
                     justify-center gap-2 opacity-0 group-hover:opacity-100 transition">
                     <button wire:click="openModal('{{ $product->id }}')"
@@ -39,6 +39,11 @@
                         </div>
                         <div class="text-xs text-gray-500 ml-3">(150)</div>
                     </div>
+                    <div class="px-2 pt-4 pb-2">
+                        @foreach ($product->categories as $category)
+                            <a href="{{ route('category-page', $category->id) }}" class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{{$category->nome}}</a>
+                        @endforeach
+                    </div>
                 </div>
                 <a href="#"class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Adicionar ao Carrinho</a>
             </div>
@@ -66,7 +71,7 @@
             @foreach ($products->shuffle()->take(4) as $product)
             <div wire:key="{{ $product->id }}" class="bg-white shadow rounded overflow-hidden group">
                 <div class="relative">
-                    <img src="{{ Storage::url($product->imagem) }}" alt="product 1" class="w-full h-48 object-cover">
+                    <img src="{{ $product->images->first() ? Storage::url($product->images->first()->imagem) : asset('imagens/470.jpg') }}" alt="{{$product->nome}}" class="w-full h-64 object-cover">
                     <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center 
                     justify-center gap-2 opacity-0 group-hover:opacity-100 transition">
                         <button wire:click="openModal('{{ $product->id }}')"
@@ -97,6 +102,11 @@
                             <span><i class="fa-solid fa-star"></i></span>
                         </div>
                         <div class="text-xs text-gray-500 ml-3">(150)</div>
+                    </div>
+                    <div class="px-2 pt-4 pb-2">
+                        @foreach ($product->categories as $category)
+                            <a href="{{ route('category-page', $category->id) }}" class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{{$category->nome}}</a>
+                        @endforeach
                     </div>
                 </div>
                 <a href="#"
