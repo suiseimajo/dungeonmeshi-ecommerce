@@ -120,8 +120,11 @@ class ProductController extends Controller
     public function product(string $slug)
     {
         $product = Product::where('slug', $slug)->first();
+        $category = $product->categories->first();
+        $relatedProducts = $category ? $category->products->where('id', '!=', $product->id) : Product::inRandomOrder()->take(4)->where('id', '!=', $product->id)->get();
+        
 
-        return view('product-page', compact('product'));
+        return view('product-page', compact('product', 'relatedProducts'));
     }
 
     public function search (Request $request)
