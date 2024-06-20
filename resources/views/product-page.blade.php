@@ -85,6 +85,12 @@
     <!-- related product -->
     <div class="container pb-16">
         <h2 class="text-2xl font-medium text-gray-800 uppercase mb-6">Produtos Relacionados</h2>
+        @if($relatedProducts->isEmpty())
+            <div>
+                <img src="{{ asset('assets/images/gbc.jpg') }}" alt="Nenhum produto relacionado" class="w-15 h-15 flex items-center justify-center">
+                <p class="text-xl text-gray-800">Nenhum produto relacionado!</p>
+            </div>
+        @else
         <div class="grid grid-cols-4 gap-6">
         @foreach ($relatedProducts as $product)
             <div class="bg-white shadow rounded overflow-hidden group">
@@ -132,6 +138,7 @@
             </div>
         @endforeach
         </div>
+        @endif
     </div>
     <!-- ./related product -->
 
