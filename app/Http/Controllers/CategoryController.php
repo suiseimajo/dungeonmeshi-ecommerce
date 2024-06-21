@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -16,7 +17,6 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::all();
-
         return view('categorias.index', compact('categories'));
 
         
@@ -38,6 +38,7 @@ class CategoryController extends Controller
     {
         $category = new Category;
         $category->nome = $request->input('nome');
+        $category->slug = Str::slug($request->input('nome'));
 
         if ($request->hasFile('imagem')) {
             // salvando a imagem numa pasta
@@ -55,19 +56,20 @@ class CategoryController extends Controller
      * Display the specified resource.
      */
 
-     public function show(string $id)
-     {
- 
-         $category = Category::where('id', $id)->first();
-         return view('categorias.show', compact('category'));
-     }
+     public function show(string $slug)
+    {
+
+        $category = Category::where('slug', $slug)->first();
+        $products = Product::where('category_id', $category->id)->first();
+        return view('categorias.show', compact('category', 'products'));
+    }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $slug)
     {
-        $category = Category::find($id);
+        $category = Category::where('slug', $slug)->first();
         return view('categorias.edit', compact('category'));
     }
 
@@ -78,6 +80,7 @@ class CategoryController extends Controller
     {
         $category = Category::find($id);
         $category->nome = $request->input('nome');
+        $category->slug = Str::slug($request->input('nome'));
 
         if ($request->hasFile('imagem')) {
             // deletando a imagem
@@ -107,9 +110,9 @@ class CategoryController extends Controller
         return redirect()->route('categorias.index');
     }
 
-    public function category(string $id)
+    public function category(string $slug)
     {
-        $category = Category::where('id', $id)->first();
+        $category = Category::where('slug', $slug)->first();
 
         return view('category-page', compact('category'));
     }

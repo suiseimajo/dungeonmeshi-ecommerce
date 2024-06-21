@@ -27,8 +27,8 @@ class HomeController extends Controller
 
     }
 
-    public function category(string $id){
-        $category = Category::where('id', $id)->first();
+    public function category(string $slug){
+        $category = Category::where('slug', $slug)->first();
 
         return view('category-page', compact('category'));
 

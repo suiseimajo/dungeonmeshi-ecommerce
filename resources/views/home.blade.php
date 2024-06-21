@@ -56,7 +56,7 @@
                             title="zoom">
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </a>
-                        <a href="{{ route('category-page', $category->id )}}"
+                        <a href="{{ route('category-page', $category->slug )}}"
                             class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
                             title="view category">
                             <i class="fa-solid fa-arrow-pointer"></i>

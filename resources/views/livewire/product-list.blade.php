@@ -41,7 +41,7 @@
                     </div>
                     <div class="px-2 pt-4 pb-2">
                         @foreach ($product->categories as $category)
-                            <a href="{{ route('category-page', $category->id) }}" class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{{$category->nome}}</a>
+                            <a href="{{ route('category-page', $category->slug) }}" class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{{$category->nome}}</a>
                         @endforeach
                     </div>
                 </div>
@@ -105,7 +105,7 @@
                     </div>
                     <div class="px-2 pt-4 pb-2">
                         @foreach ($product->categories as $category)
-                            <a href="{{ route('category-page', $category->id) }}" class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{{$category->nome}}</a>
+                            <a href="{{ route('category-page', $category->slug) }}" class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{{$category->nome}}</a>
                         @endforeach
                     </div>
                 </div>

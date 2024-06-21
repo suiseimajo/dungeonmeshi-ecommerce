@@ -57,9 +57,10 @@
             </div>
 
             <div class="grid md:grid-cols-3 grid-cols-2 gap-6">
+            @foreach ($category->products as $product)
                 <div class="bg-white shadow rounded overflow-hidden group">
                     <div class="relative">
-                        <img src="#" alt="product 1" class="w-full">
+                        <img src="{{ $product->images->first() ? Storage::url($product->images->first()->imagem) : asset('imagens/470.jpg') }}" alt="{{$product->nome}}" class="w-full">
                         <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center 
                         justify-center gap-2 opacity-0 group-hover:opacity-100 transition">
                             <a href="#"
@@ -76,11 +77,10 @@
                     </div>
                     <div class="pt-4 pb-3 px-4">
                         <a href="#">
-                            <h4 class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">#</h4>
+                            <h4 class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">{{$product->nome}}</h4>
                         </a>
                         <div class="flex items-baseline mb-1 space-x-2">
-                            <p class="text-xl text-primary font-semibold">#</p>
-                            <p class="text-sm text-gray-400 line-through">#</p>
+                            <p class="text-xl text-primary font-semibold">{{'R$' . number_format($product->preco/100, 2) }}</p>
                         </div>
                         <div class="flex items-center">
                             <div class="flex gap-1 text-sm text-yellow-400">
@@ -93,10 +93,15 @@
                             <div class="text-xs text-gray-500 ml-3">(10000)</div>
                         </div>
                     </div>
-                    <a href="#"
-                        class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Add
-                        to cart</a>
+                    <div class="px-2 pt-4 pb-2">
+                        @foreach ($product->categories as $category)
+                            <a href="{{ route('category-page', $category->slug) }}" class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{{$category->nome}}</a>
+                        @endforeach
+                    </div>
+                    <a href="{{ route('product-page', $product->slug) }}"
+                        class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Adicionar ao Carrinho</a>
                 </div>
+            @endforeach
             </div>
         </div>
 <x-footer>
