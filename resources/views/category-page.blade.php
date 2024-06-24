@@ -19,10 +19,12 @@
         
         <x-sidebar>
             <div class="space-y-2">
+            @foreach ($categories as $cat)
                 <div class="flex items-center">
-                    <a for="cat-1" href="#" class="text-gray-600 ml-3 cusror-pointer">#</a>
-                    <div class="ml-auto text-gray-600 text-sm">#</div>
+                    <a for="cat-1" href="{{ $cat->id }}" class="text-gray-600 ml-3 cusror-pointer">{{ $cat->nome }}</a>
+                    <div class="ml-auto text-gray-600 text-sm">{{$cat->products->count()}}</div>
                 </div>
+            @endforeach
             </div>
                 <x-slot name="prices">
                     <input type="text" name="min" id="min"

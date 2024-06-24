@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 use App\Livewire\SearchPage;
 use App\Livewire\CreateProduct;
 use App\Livewire\EditProduct;
+use App\Livewire\CategoryPage;
 
 Route::get('/', [HomeController::class, 'index'])->name('home'); 
 
@@ -33,5 +34,6 @@ require __DIR__.'/auth.php';
 Route::get('/sobre', [AboutController::class, 'about'])->name('about');
 Route::get('/contato', [ContactController::class, 'contact'])->name('contact-page');
 Route::get('/produto/{slug}', [ProductController::class, 'product'])->name('product-page');
-Route::get('/categoria/{slug}', [CategoryController::class, 'category'])->name('category-page');
 Route::get('/busca', SearchPage::class)->name('search-page');
+Route::get('{slug}', CategoryPage::class)->name('category-page');
+
