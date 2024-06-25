@@ -20,16 +20,24 @@
 
         <x-sidebar>
             <div class="space-y-2">
+            @foreach ($categories as $cat)
                 <div class="flex items-center">
-                    <a for="cat-1" href="#" class="text-gray-600 ml-3 cusror-pointer">#</a>
-                    <div class="ml-auto text-gray-600 text-sm">#</div>
+                    <a for="cat-1" href="{{ $cat->id }}" class="text-gray-600 ml-3 cusror-pointer">{{ $cat->nome }}</a>
+                    <div class="ml-auto text-gray-600 text-sm">{{$cat->products->count()}}</div>
                 </div>
+            @endforeach
             </div>
                 <x-slot name="prices">
-                    <x-filter>
-                    </x-filter>
+                    <input type="text" name="min" id="min"
+                        class="w-full border-gray-300 focus:border-primary rounded focus:ring-0 px-3 py-1 text-gray-600 shadow-sm"
+                        placeholder="min">
+                    <span class="mx-3 text-gray-500">-</span>
+                    <input type="text" name="max" id="max"
+                        class="w-full border-gray-300 focus:border-primary rounded focus:ring-0 px-3 py-1 text-gray-600 shadow-sm"
+                        placeholder="max">
                 </x-slot>
         </x-sidebar>
+
         <!-- products -->
          <div class="col-span-3">
             <div class="flex items-center mb-4">
