@@ -3,7 +3,7 @@
     <div class="container pb-16">
         <h2 id="produtos" class="text-2xl font-medium text-gray-800 uppercase mb-6">novos pratos</h2>
         <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-        @foreach ($products->sortByDesc('created_at') as $product)
+        @foreach ($products as $product)
             <div wire:key="{{ $product->id }}" class="bg-white shadow rounded overflow-hidden group">
                 <div class="relative">
                     <img src="{{ $product->images->first() ? Storage::url($product->images->first()->imagem) : asset('imagens/470.jpg') }}" alt="{{$product->nome}}" class="w-full h-64 object-cover">
