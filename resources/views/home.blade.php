@@ -72,6 +72,10 @@
     <livewire:product-list :products="$products"/>
     <!-- ./product -->
 
+    <!-- recommend -->
+    <livewire:recommend-list :products="$products"/>     
+    <!-- ./recommend -->
+
     <!-- footer -->
     <x-footer>
     </x-footer>    
