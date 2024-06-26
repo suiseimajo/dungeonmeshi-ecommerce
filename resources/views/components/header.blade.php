@@ -31,9 +31,12 @@
 
             <div class="w-full max-w-4xl relative flex">
             <form class="md:flex w-1/2 mx-auto flex-grow" action="{{ route('search-page') }}" method="GET">
-                <input type="text" name="search" id="search"
+                <div class="relative w-full">
+                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                        <input type="text" name="search" id="search"
                     class="w-full border border-primary border-r-0 pl-12 py-3 pr-3 rounded-l-md focus:outline-none hidden md:flex"
                 placeholder="busca">
+                </div>
                 <button
                     type="submit"
                     class="bg-primary border border-primary text-white px-8 rounded-r-md hover:bg-transparent hover:text-primary transition hidden md:flex items-center">
@@ -123,29 +126,29 @@
 
                 <!-- dropdown -->
                 <div class="absolute w-full left-0 top-full bg-white shadow-md py-3 divide-y divide-gray-300 divide-dashed opacity-0 group-hover:opacity-100 transition duration-300 invisible group-hover:visible">
-                    <a href="#" class="flex items-center px-6 py-3 hover:bg-gray-100 transition">
-                        <img src="../assets/images/icons/sofa.svg" alt="sofa" class="w-5 h-5 object-contain">
-                        <span class="ml-6 text-gray-600 text-sm">Sofa</span>
+                    <a href="http://localhost:8000/bebidas" class="flex items-center px-6 py-3 hover:bg-gray-100 transition">
+                        <i class="fa-solid fa-wine-bottle text-rose-300"></i>
+                        <span class="ml-6 text-gray-600 text-sm">Bebidas</span>
                     </a>
-                    <a href="#" class="flex items-center px-6 py-3 hover:bg-gray-100 transition">
-                        <img src="../assets/images/icons/terrace.svg" alt="terrace" class="w-5 h-5 object-contain">
-                        <span class="ml-6 text-gray-600 text-sm">Terarce</span>
+                    <a href="http://localhost:8000/carnes" class="flex items-center px-6 py-3 hover:bg-gray-100 transition">
+                        <i class="fa-solid fa-drumstick-bite text-rose-300"></i>
+                        <span class="ml-6 text-gray-600 text-sm">Carnes</span>
                     </a>
-                    <a href="#" class="flex items-center px-6 py-3 hover:bg-gray-100 transition">
-                        <img src="../assets/images/icons/bed.svg" alt="bed" class="w-5 h-5 object-contain">
-                        <span class="ml-6 text-gray-600 text-sm">Bed</span>
+                    <a href="http://localhost:8000/peixes" class="flex items-center px-6 py-3 hover:bg-gray-100 transition">
+                        <i class="fa-solid fa-fish-fins text-rose-300"></i>
+                        <span class="ml-6 text-gray-600 text-sm">Peixes</span>
                     </a>
-                    <a href="#" class="flex items-center px-6 py-3 hover:bg-gray-100 transition">
-                        <img src="../assets/images/icons/office.svg" alt="office" class="w-5 h-5 object-contain">
-                        <span class="ml-6 text-gray-600 text-sm">office</span>
+                    <a href="http://localhost:8000/doces" class="flex items-center px-6 py-3 hover:bg-gray-100 transition">
+                        <i class="fa-solid fa-ice-cream text-rose-300"></i>
+                        <span class="ml-6 text-gray-600 text-sm">Doces</span>
                     </a>
-                    <a href="#" class="flex items-center px-6 py-3 hover:bg-gray-100 transition">
-                        <img src="../assets/images/icons/outdoor-cafe.svg" alt="outdoor" class="w-5 h-5 object-contain">
-                        <span class="ml-6 text-gray-600 text-sm">Outdoor</span>
+                    <a href="http://localhost:8000/tortas" class="flex items-center px-6 py-3 hover:bg-gray-100 transition">
+                        <i class="fa-solid fa-cake-candles text-rose-300"></i>
+                        <span class="ml-6 text-gray-600 text-sm">Tortas</span>
                     </a>
-                    <a href="#" class="flex items-center px-6 py-3 hover:bg-gray-100 transition">
-                        <img src="../assets/images/icons/bed-2.svg" alt="Mattress" class="w-5 h-5 object-contain">
-                        <span class="ml-6 text-gray-600 text-sm">Mattress</span>
+                    <a href="http://localhost:8000/outros" class="flex items-center px-6 py-3 hover:bg-gray-100 transition">
+                        <i class="fa-solid fa-utensils text-rose-300"></i>
+                        <span class="ml-6 text-gray-600 text-sm">Outros</span>
                     </a>
                 </div>
             </div>
