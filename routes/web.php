@@ -13,6 +13,7 @@ use App\Livewire\SearchPage;
 use App\Livewire\CreateProduct;
 use App\Livewire\EditProduct;
 use App\Livewire\CategoryPage;
+use App\Livewire\Cart;
 
 Route::get('/', [HomeController::class, 'index'])->name('home'); 
 
@@ -27,6 +28,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('produtos', ProductController::class)->except(['create', 'edit']);
     Route::resource('categorias', CategoryController::class);
     Route::resource('usuarios', UserController::class);
+    Route::get('/carrinho', Cart::class)->name('cart');
 });
 
 require __DIR__.'/auth.php';
