@@ -25,7 +25,7 @@
                           <a href="{{ route('category-page', $category->slug) }}" class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{{$category->nome}}</a>
                       @endforeach
                     </div>
-                    <p class="mt-1 text-sm font-medium text-gray-900">{{'$' . number_format($product->price, 2) }}</p>
+                    <p class="mt-1 text-sm font-medium text-gray-900">{{'$' . number_format($product->price/100, 2) }}</p>
                   </div>
   
                   <div class="mt-4 sm:mt-0 sm:pr-9">
@@ -71,7 +71,7 @@
           <dl class="mt-6 space-y-4">
             <div class="flex items-center justify-between">
               <dt class="text-sm text-gray-600">Subtotal</dt>
-              <dd class="text-sm font-medium text-gray-900">{{ 'R$' . number_format($subtotal) }}</dd>
+              <dd class="text-sm font-medium text-gray-900">{{ 'R$' . number_format($subtotal/100, 2, ',', '.') }}</dd>
             </div>
             <div class="flex items-center justify-between border-t border-gray-200 pt-4">
               <dt class="flex items-center text-sm text-gray-600">
@@ -95,11 +95,11 @@
                   </svg>
                 </a>
               </dt>
-              <dd class="text-sm font-medium text-gray-900">{{ 'R$' . number_format($taxes) }}</dd>
+              <dd class="text-sm font-medium text-gray-900">{{ 'R$' . number_format($taxes/100, 2, ',', '.') }}</dd>
             </div>
             <div class="flex items-center justify-between border-t border-gray-200 pt-4">
               <dt class="text-base font-medium text-gray-900">Total Pedido</dt>
-              <dd class="text-base font-medium text-gray-900">{{ 'R$' . number_format($total) }}</dd>
+              <dd class="text-base font-medium text-gray-900">{{ 'R$' . number_format($total/100, 2, ',', '.') }}</dd>
             </div>
           </dl>
   
