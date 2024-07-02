@@ -1,6 +1,5 @@
-<x-header>
-</x-header>
     <!-- breadcrumb -->
+<div>
     <div class="container py-4 flex items-center gap-3">
         <a href="../index.html" class="text-primary text-base">
             <i class="fa-solid fa-house"></i>
@@ -143,8 +142,6 @@
     <!-- ./related product -->
 
     <!-- footer -->
-    <x-footer>
-    </x-footer>
     <!-- ./footer -->
 
     <!-- copyright -->
@@ -156,8 +153,5 @@
             </div>
         </div>
     </div>
+</div>
     <!-- ./copyright -->
-
-</body>
-
-</html>
