@@ -42,10 +42,42 @@
                     @endforeach
                 </div>
             </div>
-            <a href="#"
-                class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Adicionar ao Carrinho</a>
+            <button wire:click="addToCart('{{ $product->id }}')" class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Adicionar ao Carrinho</button>
+            <button wire:click="removeFromCart('{{ $product->id }}')" class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Remover do Carrinho</button>
         </div>
         @endforeach
+        <x-modal name="success-addtocart" focusable>
+            <div class="p-6">
+                <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
+                    {{ __('Carrinho') }}
+                </h2>
+
+                <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                    {{ __('Produto adicionado ao carrinho!') }}
+                </p>
+                <div class="mt-6 flex justify-end">
+                    <x-primary-button class="ms-3" x-on:click="$dispatch('close')">
+                        {{ __('Ok!') }}
+                    </x-primary-button>
+                </div>
+            </div>
+        </x-modal>
+        <x-modal name="success-removefromcart" focusable>
+            <div class="p-6">
+                <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
+                    {{ __('Carrinho') }}
+                </h2>
+
+                <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                    {{ __('Produto removido do carrinho!') }}
+                </p>
+                <div class="mt-6 flex justify-end">
+                    <x-primary-button class="ms-3" x-on:click="$dispatch('close')">
+                        {{ __('Ok!') }}
+                    </x-primary-button>
+                </div>
+            </div>
+        </x-modal>
         </div>
         <div id="modal"
             class="{{$visible ? '' : 'hidden'}} fixed top-0 left-0 z-80 

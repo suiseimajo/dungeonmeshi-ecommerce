@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\WishController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
@@ -29,6 +30,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('produtos', ProductController::class)->except(['create', 'edit']);
     Route::resource('categorias', CategoryController::class);
     Route::resource('usuarios', UserController::class);
+    Route::get('/favoritos', [WishController::class, 'wish'])->name('wish-page');
     Route::get('/carrinho', Cart::class)->name('cart');
 });
 

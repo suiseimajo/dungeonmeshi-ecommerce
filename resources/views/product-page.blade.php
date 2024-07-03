@@ -53,15 +53,32 @@
             </div>
 
             <div class="mt-6 flex gap-3 border-b border-gray-200 pb-5 pt-5">
-                <a href="#"
+                <button wire:click="addToCart({{ $product->id }})"
                     class="bg-primary border border-primary text-white px-8 py-2 font-medium rounded uppercase flex items-center gap-2 hover:bg-transparent hover:text-primary transition">
-                    <i class="fa-solid fa-bag-shopping"></i> Adicionar ao Carrinho
-                </a>
-                <a href="#"
-                    class="border border-gray-300 text-gray-600 px-8 py-2 font-medium rounded uppercase flex items-center gap-2 hover:text-primary transition">
-                    <i class="fa-solid fa-heart"></i> Lista de Desejos
-                </a>
+                    <i class="fa-solid fa-bag-shopping"></i> Carrinho
+                </button>
+                <button wire:click="saveWish('{{ $product->id }}')"
+                    class="border border-gray-300 px-8 py-2 font-medium rounded uppercase flex items-center gap-2 hover:text-primary transition">
+                    <i class="fa-solid fa-heart"></i> <span class="text-gray">Lista de Desejos
+                </button>
             </div>
+
+            <x-modal name="success-addtocart" focusable>
+                <div class="p-6">
+                    <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
+                        {{ __('Carrinho') }}
+                    </h2>
+    
+                    <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                        {{ __('Produto adicionado ao carrinho!') }}
+                    </p>
+                    <div class="mt-6 flex justify-end">
+                        <x-primary-button class="ms-3" x-on:click="$dispatch('close')">
+                            {{ __('Ok!') }}
+                        </x-primary-button>
+                    </div>
+                </div>
+            </x-modal>
 
             <div class="flex gap-3 mt-4">
                 <a href="#"
@@ -132,12 +149,44 @@
                         <a href="{{ route('category-page', $category->slug) }}" class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{{$category->nome}}</a>
                     @endforeach
                 </div>
-                <a href="{{ route('product-page', $product->slug) }}"
-                    class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Adicionar ao Carrinho</a>
+                <button wire:click="addToCart('{{ $product->id }}')" class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Adicionar ao Carrinho</button>
+                <button wire:click="removeFromCart('{{ $product->id }}')" class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Remover do Carrinho</button>
             </div>
         @endforeach
         </div>
         @endif
+        <x-modal name="success-addtocart" focusable>
+            <div class="p-6">
+                <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
+                    {{ __('Carrinho') }}
+                </h2>
+
+                <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                    {{ __('Produto adicionado ao carrinho!') }}
+                </p>
+                <div class="mt-6 flex justify-end">
+                    <x-primary-button class="ms-3" x-on:click="$dispatch('close')">
+                        {{ __('Ok!') }}
+                    </x-primary-button>
+                </div>
+            </div>
+        </x-modal>
+        <x-modal name="success-removefromcart" focusable>
+            <div class="p-6">
+                <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
+                    {{ __('Carrinho') }}
+                </h2>
+
+                <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                    {{ __('Produto removido do carrinho!') }}
+                </p>
+                <div class="mt-6 flex justify-end">
+                    <x-primary-button class="ms-3" x-on:click="$dispatch('close')">
+                        {{ __('Ok!') }}
+                    </x-primary-button>
+                </div>
+            </div>
+        </x-modal>
     </div>
     <!-- ./related product -->
 
