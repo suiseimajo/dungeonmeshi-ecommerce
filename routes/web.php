@@ -16,6 +16,7 @@ use App\Livewire\EditProduct;
 use App\Livewire\CategoryPage;
 use App\Livewire\Cart;
 use App\Livewire\ProductPage;
+use App\Livewire\Wishlist;
 
 Route::get('/', [HomeController::class, 'index'])->name('home'); 
 
@@ -30,7 +31,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('produtos', ProductController::class)->except(['create', 'edit']);
     Route::resource('categorias', CategoryController::class);
     Route::resource('usuarios', UserController::class);
-    Route::get('/favoritos', [WishController::class, 'wish'])->name('wish-page');
+    Route::get('/favoritos', Wishlist::class)->name('wish-page');
     Route::get('/carrinho', Cart::class)->name('cart');
 });
 
@@ -38,6 +39,7 @@ require __DIR__.'/auth.php';
 
 Route::get('/sobre', [AboutController::class, 'about'])->name('about');
 Route::get('/contato', [ContactController::class, 'contact'])->name('contact-page');
+Route::delete('/favoritos/{id}', [WishController::class, 'destroyWish'])->name('profile.destroy-wish');
 Route::get('/produto/{slug}', ProductPage::class)->name('product-page');
 Route::get('/busca', SearchPage::class)->name('search-page');
 Route::get('{slug}', CategoryPage::class)->name('category-page');

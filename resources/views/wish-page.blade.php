@@ -1,5 +1,3 @@
-<x-header>
-</x-header>
 <div>
     <div class="mx-auto container px-4 md:px-6 2xl:px-0 py-12 flex justify-center items-center">
     <div class="flex flex-col jusitfy-start items-start">
@@ -7,13 +5,13 @@
         <h1 class="text-3xl lg:text-4xl tracking-tight font-semibold leading-8 lg:leading-9 text-gray-800 ">Lista de Desejos</h1>
       </div>
       <div class="mt-4">
-        <p class="text-2xl tracking-tight leading-6 text-gray-600">#</p>
+        <p class="text-2xl tracking-tight leading-6 text-gray-600"># itens</p>
       </div>
         <div class="mt-10 lg:mt-12 grid grid-cols-1 lg:grid-cols-3 gap-x-8 gap-y-10 lg:gap-y-0">
           <div class="flex flex-col">
             <div class="relative mt-6">
-              <img src="#" alt="product 1" class="w-full h-64 object-cover">
-              <form method="post" action="#" class="p-6">
+              <img src="" alt="product 1" class="w-full h-64 object-cover">
+              <form method="post" action="" class="p-6">
                 @csrf
                 @method('delete')
                   <button aria-label="close" class="top-4 right-4 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 absolute p-1.5 bg-gray-800 dark:bg-white dark:text-gray-800 text-white hover:text-gray-400">
@@ -26,7 +24,7 @@
             </div>
             <div class="mt-6 flex justify-between items-center">
               <div class="flex justify-center items-center">
-                <p class="tracking-tight text-2xl font-semibold leading-6 text-gray-800">#</p>
+                <p class="tracking-tight text-2xl font-semibold leading-6 text-gray-800"></p>
               </div>
               <div class="flex justify-center items-center">
                 <button aria-label="show menu" onclick="handleClick1(true)" class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 py-2.5 px-2 bg-gray-800 dark:bg-white dark:text-gray-800 text-white hover:text-gray-400 hover:bg-gray-200">
@@ -44,10 +42,10 @@
                 <p class="tracking-tight text-xs leading-3 text-gray-800">Categoria</p>
               </div>
               <div class="mt-2 h-12 overflow-auto w-full">
-                <p><a href="#"  class="tracking-tight text-base font-medium leading-4 text-gray-800">#</p></a>
+                <p><a href="#"  class="tracking-tight text-base font-medium leading-4 text-gray-800"></p></a>
               </div>
               <div class="mt-6">
-                <p class="tracking-tight text-base font-medium leading-4 text-gray-800">#</p>
+                <p class="tracking-tight text-base font-medium leading-4 text-gray-800"></p>
               </div>
               <div class="flex jusitfy-between flex-col lg:flex-row items-center mt-10 w-full space-y-4 lg:space-y-0 lg:space-x-4 xl:space-x-8">
                 <a href="#" class="w-full">
@@ -80,5 +78,3 @@
     </div>
   </div>
 </div>
-<x-footer>
-</x-footer>

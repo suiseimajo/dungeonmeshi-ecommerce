@@ -14,11 +14,12 @@
                         title="view product">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
-                        <a href="#"
-                            class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
-                            title="add to wishlist">
-                            <i class="fa-solid fa-heart"></i>
-                        </a>
+                    <button
+                        wire:click="saveWish('{{ $product->id }}')"
+                        class="{{auth()->user()?->favorites->contains('id', $product->id) ? 'text-red-800' : 'text-white'}} text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
+                        title="add to wishlist">
+                        <i class="fa-solid fa-heart"></i>
+                    </button>
                     </div>
                 </div>
             
