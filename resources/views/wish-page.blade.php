@@ -5,12 +5,13 @@
         <h1 class="text-3xl lg:text-4xl tracking-tight font-semibold leading-8 lg:leading-9 text-gray-800 ">Lista de Desejos</h1>
       </div>
       <div class="mt-4">
-        <p class="text-2xl tracking-tight leading-6 text-gray-600"># itens</p>
+        <p class="text-2xl tracking-tight leading-6 text-gray-600">{{ count(auth()->user()->favorites) }} itens</p>
       </div>
         <div class="mt-10 lg:mt-12 grid grid-cols-1 lg:grid-cols-3 gap-x-8 gap-y-10 lg:gap-y-0">
+        @foreach (auth()->user()->favorites as $favorite)
           <div class="flex flex-col">
             <div class="relative mt-6">
-              <img src="" alt="product 1" class="w-full h-64 object-cover">
+              <img src="{{ $favorite->images->first() ? Storage::url($favorite->images->first()->imagem) : asset('imagens/470.jpg') }}" alt="product 1" class="w-full h-64 object-cover">
               <form method="post" action="" class="p-6">
                 @csrf
                 @method('delete')
@@ -48,7 +49,7 @@
                 <p class="tracking-tight text-base font-medium leading-4 text-gray-800"></p>
               </div>
               <div class="flex jusitfy-between flex-col lg:flex-row items-center mt-10 w-full space-y-4 lg:space-y-0 lg:space-x-4 xl:space-x-8">
-                <a href="#" class="w-full">
+                <a href="{{'$' . number_format($favorite->preco, 2) }}" class="w-full">
                   <button class="focus:outline-none focus:ring-gray-800 focus:ring-offset-2 focus:ring-2 text-gray-800 w-full tracking-tight py-4 text-lg leading-4 hover:bg-gray-300 hover:text-gray-800 dark:bg-transparent dark:border-gray dark:hover:bg-gray-800 bg-white border border-gray-800 dark:hover:text-white">Mais Informações</button>
                 </a>
                 <div class="w-full">
@@ -57,6 +58,7 @@
               </div>
             </div>
           </div>
+        @endforeach
           <x-modal name="success-addtocart" focusable>
             <div class="p-6">
                 <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
