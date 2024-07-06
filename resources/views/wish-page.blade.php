@@ -48,14 +48,14 @@
                 @endforeach
               </div>
               <div class="mt-6">
-                <p class="tracking-tight text-base font-medium leading-4 text-gray-800"></p>
+                <p class="tracking-tight text-base font-medium leading-4 text-gray-800">{{'R$' . number_format($favorite->preco/100, 2) }}</p>
               </div>
               <div class="flex jusitfy-between flex-col lg:flex-row items-center mt-10 w-full space-y-4 lg:space-y-0 lg:space-x-4 xl:space-x-8">
                 <a href="{{'$' . number_format($favorite->preco, 2) }}" class="w-full">
                   <button class="focus:outline-none focus:ring-gray-800 focus:ring-offset-2 focus:ring-2 text-gray-800 w-full tracking-tight py-4 text-lg leading-4 hover:bg-gray-300 hover:text-gray-800 dark:bg-transparent dark:border-gray dark:hover:bg-gray-800 bg-white border border-gray-800 dark:hover:text-white">Mais Informações</button>
                 </a>
                 <div class="w-full">
-                  <button class="focus:outline-none focus:ring-gray-800 focus:ring-offset-2 focus:ring-2 text-white w-full tracking-tight py-4 text-lg leading-4 hover:bg-black bg-gray-800 border border-gray-800 dark:hover:bg-gray-700 dark:hover:text-white">Adicionar ao Carrinho</button>
+                  <button wire:click="addToCart('{{ $favorite->id }}')" class="focus:outline-none focus:ring-gray-800 focus:ring-offset-2 focus:ring-2 text-white w-full tracking-tight py-4 text-lg leading-4 hover:bg-black bg-gray-800 border border-gray-800 dark:hover:bg-gray-700 dark:hover:text-white">Adicionar ao Carrinho</button>
                 </div>
               </div>
             </div>
