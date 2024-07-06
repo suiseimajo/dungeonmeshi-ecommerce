@@ -43,7 +43,9 @@
                 <p class="tracking-tight text-xs leading-3 text-gray-800">Categoria</p>
               </div>
               <div class="mt-2 h-12 overflow-auto w-full">
-                <p><a href="#"  class="tracking-tight text-base font-medium leading-4 text-gray-800"></p></a>
+                @foreach ($favorite->categories->sortBy("nome") as $category)
+                <p><a href="{{ route('category-page', $category->slug) }}"  class="tracking-tight text-base font-medium leading-4 text-gray-800">{{$category->nome}}</p></a>
+                @endforeach
               </div>
               <div class="mt-6">
                 <p class="tracking-tight text-base font-medium leading-4 text-gray-800"></p>
