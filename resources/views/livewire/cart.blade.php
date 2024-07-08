@@ -25,7 +25,7 @@
                           <a href="{{ route('category-page', $category->slug) }}" class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{{$category->nome}}</a>
                       @endforeach
                     </div>
-                    <p class="mt-1 text-sm font-medium text-gray-900">{{'$' . number_format($product->price/100, 2) }}</p>
+                    <p class="mt-1 text-sm font-medium text-gray-900">{{'R$' . number_format($product->price/100, 2, ',', '.') }}</p>
                   </div>
   
                   <div class="mt-4 sm:mt-0 sm:pr-9">

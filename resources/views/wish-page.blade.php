@@ -12,7 +12,7 @@
           <div class="flex flex-col">
             <div class="relative mt-6">
               <img src="{{ $favorite->images->first() ? Storage::url($favorite->images->first()->imagem) : asset('imagens/470.jpg') }}" alt="product 1" class="w-full h-64 object-cover">
-              <form method="post" action="" class="p-6">
+              <form method="post" action="{{ route('profile.destroy-wish', $favorite->pivot->id) }}" class="p-6">
                 @csrf
                 @method('delete')
                   <button aria-label="close" class="top-4 right-4 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 absolute p-1.5 bg-gray-800 dark:bg-white dark:text-gray-800 text-white hover:text-gray-400">
@@ -48,10 +48,10 @@
                 @endforeach
               </div>
               <div class="mt-6">
-                <p class="tracking-tight text-base font-medium leading-4 text-gray-800">{{'R$' . number_format($favorite->preco/100, 2) }}</p>
+                <p class="tracking-tight text-base font-medium leading-4 text-gray-800">{{'R$' . number_format($favorite->preco/100, 2, ',', '.') }}</p>
               </div>
               <div class="flex jusitfy-between flex-col lg:flex-row items-center mt-10 w-full space-y-4 lg:space-y-0 lg:space-x-4 xl:space-x-8">
-                <a href="{{'$' . number_format($favorite->preco, 2) }}" class="w-full">
+                <a href="{{ route('product-page', $favorite->slug) }}" class="w-full">
                   <button class="focus:outline-none focus:ring-gray-800 focus:ring-offset-2 focus:ring-2 text-gray-800 w-full tracking-tight py-4 text-lg leading-4 hover:bg-gray-300 hover:text-gray-800 dark:bg-transparent dark:border-gray dark:hover:bg-gray-800 bg-white border border-gray-800 dark:hover:text-white">Mais Informações</button>
                 </a>
                 <div class="w-full">
