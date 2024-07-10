@@ -6,6 +6,7 @@ use Livewire\Component;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Wishlist;
+use App\Models\Rating;
 use App\Services\cartService;
 
 
@@ -73,6 +74,22 @@ class ProductList extends Component
         $cartService->removeFromCart($productId);
 
         $this->dispatch('open-modal', 'success-removefromcart');
+        }
+    }
+
+    public function saveRate($rating, $productId)
+    {
+        if (!auth()->check()) {
+            return Redirect()->route('login');
+        }
+
+        else {
+            $rate = new Rating;
+            $rate->rating = $rating;
+            $rate->product_id = $productId;
+            $rate->user_id = auth()->id();
+            $rate->review = " ";
+            $rate->save();    
         }
     }
     

@@ -110,6 +110,7 @@ class ProductController extends Controller
             Storage::disk('public')->delete($image);
         }
         $product->categories()->detach();
+        $product->ratings()->delete();
         $product->images()->delete();
         $product->delete();      
         session()->flash('notif.success', 'Produto deletado com sucesso!');

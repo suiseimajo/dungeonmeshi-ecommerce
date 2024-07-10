@@ -31,15 +31,30 @@
                         <p class="text-xl text-primary font-semibold">{{'R$' . number_format($product->preco/100, 2, ',', '.') }}</p>
                     </div>
                     <div class="flex items-center">
-                        <div class="flex gap-1 text-sm text-yellow-400">
-                            <span><i class="fa-solid fa-star"></i></span>
-                            <span><i class="fa-solid fa-star"></i></span>
-                            <span><i class="fa-solid fa-star"></i></span>
-                            <span><i class="fa-solid fa-star"></i></span>
-                            <span><i class="fa-solid fa-star"></i></span>
-                        </div>
-                        <div class="text-xs text-gray-500 ml-3">(150)</div>
-                    </div>
+                <div class="flex gap-1 fa-1x">
+                    <label for="star1">
+                        <input class="hidden" wire:model.live="rating" type="radio" id="star1" name="rating" value="1" />
+                        <i class="@if($product->ratings->avg('rating') >= 1 ) text-yellow-400 @endif fa-solid fa-star"></i>
+                    </label>
+                    <label for="star2">
+                        <input class="hidden" wire:model.live="rating" type="radio" id="star2" name="rating" value="2" />
+                        <i class="@if($product->ratings->avg('rating') >= 2 ) text-yellow-400 @endif fa-solid fa-star"></i>
+                    </label>
+                    <label for="star3">
+                        <input class="hidden" wire:model.live="rating" type="radio" id="star3" name="rating" value="3" />
+                        <i class="@if($product->ratings->avg('rating') >= 3 ) text-yellow-400 @endif fa-solid fa-star"></i>
+                    </label>
+                    <label for="star4">
+                        <input class="hidden" wire:model.live="rating" type="radio" id="star4" name="rating" value="4" />
+                        <i class="@if($product->ratings->avg('rating') >= 4 ) text-yellow-400 @endif fa-solid fa-star"></i>
+                    </label>
+                    <label for="star5">
+                        <input class="hidden" wire:model.live="rating" type="radio" id="star5" name="rating" value="5" />
+                        <i class="@if($product->ratings->avg('rating') >= 5 ) text-yellow-400 @endif fa-solid fa-star"></i>
+                    </label>
+                </div>
+                <div class="text-xs text-gray-500 ml-3">{{count($product->ratings)}}</div>
+            </div>
                     <div class="px-2 pt-4 pb-2">
                         @foreach ($product->categories as $category)
                             <a href="{{ route('category-page', $category->slug) }}" class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{{$category->nome}}</a>
