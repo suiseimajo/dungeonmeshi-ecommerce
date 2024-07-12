@@ -88,7 +88,6 @@ class ProductList extends Component
             $rate->rating = $rating;
             $rate->product_id = $productId;
             $rate->user_id = auth()->id();
-            $rate->review = " ";
             $rate->save();    
         }
     }
