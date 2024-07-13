@@ -32,7 +32,8 @@
                     </div>
                     <div class="flex items-center">
                 <div class="flex gap-1 fa-1x">
-                        <span wire:model.live="rating" type="radio" id="star1" name="rating" value="1" />
+                    <label for="star1">
+                        <input class="hidden" wire:model.live="rating" type="radio" id="star1" name="rating" value="1" />
                         <i class="@if($product->ratings->avg('rating') >= 1 ) text-yellow-400 @endif fa-solid fa-star"></i>
                     </label>
                     <label for="star2">
