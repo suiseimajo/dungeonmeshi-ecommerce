@@ -14,6 +14,7 @@ use App\Services\cartService;
 class ProductList extends Component
 {
     public $products;
+    public $rating;
 
     public bool $visible = false;
     public $image;
@@ -77,7 +78,7 @@ class ProductList extends Component
         }
     }
 
-    public function saveRate($rating, $productId)
+    public function saveRate($productId)
     {
         if (!auth()->check()) {
             return Redirect()->route('login');
@@ -85,10 +86,12 @@ class ProductList extends Component
 
         else {
             $rate = new Rating;
-            $rate->rating = $rating;
+            $rate->rating = $this->rating;
             $rate->product_id = $productId;
+            $rate->review = ' ';
             $rate->user_id = auth()->id();
             $rate->save();    
+            $this->dispatch('open-modal', 'success-rated'); 
         }
     }
     

@@ -32,26 +32,28 @@
                     </div>
                     <div class="flex items-center">
                 <div class="flex gap-1 fa-1x">
-                    <label for="star1">
+                <button type="button" wire:click="saveRate" wire:confirm="Avaliar esse produto?">
+                    <label wire:click="saveRate('{{$product->id}}')" for="star1">
                         <input class="hidden" wire:model.live="rating" type="radio" id="star1" name="rating" value="1" />
-                        <i class="@if($product->ratings->avg('rating') >= 1 ) text-yellow-400 @endif fa-solid fa-star"></i>
+                        <i class="cursor-pointer @if($product->ratings->avg('rating') >= 1) text-yellow-400 @endif fa-solid fa-star"></i>
                     </label>
-                    <label for="star2">
+                    <label wire:click="saveRate('{{$product->id}}')" for="star2">
                         <input class="hidden" wire:model.live="rating" type="radio" id="star2" name="rating" value="2" />
-                        <i class="@if($product->ratings->avg('rating') >= 2 ) text-yellow-400 @endif fa-solid fa-star"></i>
+                        <i class="cursor-pointer @if($product->ratings->avg('rating') >= 2) text-yellow-400 @endif fa-solid fa-star"></i>
                     </label>
-                    <label for="star3">
+                    <label wire:click="saveRate('{{$product->id}}')" for="star3">
                         <input class="hidden" wire:model.live="rating" type="radio" id="star3" name="rating" value="3" />
-                        <i class="@if($product->ratings->avg('rating') >= 3 ) text-yellow-400 @endif fa-solid fa-star"></i>
+                        <i class="cursor-pointer @if($product->ratings->avg('rating') >= 3) text-yellow-400 @endif fa-solid fa-star"></i>
                     </label>
-                    <label for="star4">
+                    <label wire:click="saveRate('{{$product->id}}')" for="star4">
                         <input class="hidden" wire:model.live="rating" type="radio" id="star4" name="rating" value="4" />
-                        <i class="@if($product->ratings->avg('rating') >= 4 ) text-yellow-400 @endif fa-solid fa-star"></i>
+                        <i class="cursor-pointer @if($product->ratings->avg('rating') >= 4) text-yellow-400 @endif fa-solid fa-star"></i>
                     </label>
-                    <label for="star5">
+                    <label wire:click="saveRate('{{$product->id}}')" for="star5">
                         <input class="hidden" wire:model.live="rating" type="radio" id="star5" name="rating" value="5" />
-                        <i class="@if($product->ratings->avg('rating') >= 5 ) text-yellow-400 @endif fa-solid fa-star"></i>
+                        <i class="cursor-pointer @if($product->ratings->avg('rating') >= 5) text-yellow-400 @endif fa-solid fa-star"></i>
                     </label>
+                </button>
                 </div>
                 <div class="text-xs text-gray-500 ml-3">{{count($product->ratings)}}</div>
             </div>
@@ -65,6 +67,18 @@
                 <button wire:click="removeFromCart('{{ $product->id }}')" class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Remover do Carrinho</button>
             </div>
         @endforeach
+        <x-modal name="success-rated" focusable>
+            <div class="p-6">
+                <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                    {{ __('Produto avaliado com sucesso!') }}
+                </p>
+                <div class="mt-6 flex justify-end">
+                    <x-primary-button class="ms-3" x-on:click="$dispatch('close')">
+                        {{ __('Ok!') }}
+                    </x-primary-button>
+                </div>
+            </div>
+        </x-modal>
         <x-modal name="success-addtocart" focusable>
             <div class="p-6">
                 <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
