@@ -26,15 +26,25 @@
                 <div class="flex items-baseline mb-1 space-x-2">
                     <p class="text-xl text-primary font-semibold">{{'R$' . number_format($product->preco/100, 2, ',', '.') }}</p>
                 </div>
-                <div class="flex items-center">
-                    <div class="flex gap-1 text-sm text-yellow-400">
-                        <span><i class="fa-solid fa-star"></i></span>
-                        <span><i class="fa-solid fa-star"></i></span>
-                        <span><i class="fa-solid fa-star"></i></span>
-                        <span><i class="fa-solid fa-star"></i></span>
-                        <span><i class="fa-solid fa-star"></i></span>
+                <div class="flex gap-1 fa-1x">
+                    <div class="flex items-center mb-4">
+                        <label>
+                            <i class="cursor-pointer @if($product->ratings->avg('rating') >= 1 ) text-yellow-400 @endif fa-solid fa-star"></i>
+                        </label>
+                        <label>
+                            <i class="cursor-pointer @if($product->ratings->avg('rating') >= 2 ) text-yellow-400 @endif fa-solid fa-star"></i>
+                        </label>
+                        <label>
+                            <i class="cursor-pointer @if($product->ratings->avg('rating') >= 3 ) text-yellow-400 @endif fa-solid fa-star"></i>
+                        </label>
+                        <label>
+                            <i class="cursor-pointer @if($product->ratings->avg('rating') >= 4 ) text-yellow-400 @endif fa-solid fa-star"></i>
+                        </label>
+                        <label>
+                            <i class="cursor-pointer @if($product->ratings->avg('rating') >= 5 ) text-yellow-400 @endif fa-solid fa-star"></i>
+                        </label>
+                        <div class="text-xs text-gray-500 ml-3">{{count($product->ratings)}}</div>
                     </div>
-                    <div class="text-xs text-gray-500 ml-3">(150)</div>
                 </div>
                 <div class="px-2 pt-4 pb-2">
                     @foreach ($product->categories as $category)
@@ -46,6 +56,18 @@
             <button wire:click="removeFromCart('{{ $product->id }}')" class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Remover do Carrinho</button>
         </div>
         @endforeach
+         <x-modal name="success-rated" focusable>
+            <div class="p-6">
+                <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                    {{ __('Produto avaliado com sucesso!') }}
+                </p>
+                <div class="mt-6 flex justify-end">
+                    <x-primary-button class="ms-3" x-on:click="$dispatch('close')">
+                        {{ __('Ok!') }}
+                    </x-primary-button>
+                </div>
+            </div>
+        </x-modal>
         <x-modal name="success-addtocart" focusable>
             <div class="p-6">
                 <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
