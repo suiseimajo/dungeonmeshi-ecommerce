@@ -29,19 +29,19 @@
                 <div class="flex gap-1 fa-1x">
                     <div class="flex items-center mb-4">
                         <label>
-                            <i class="cursor-pointer @if($product->ratings->avg('rating') >= 1 ) text-yellow-400 @endif fa-solid fa-star"></i>
+                            <i class="@if($product->ratings->avg('rating') >= 1 ) text-yellow-400 @endif fa-solid fa-star"></i>
                         </label>
                         <label>
-                            <i class="cursor-pointer @if($product->ratings->avg('rating') >= 2 ) text-yellow-400 @endif fa-solid fa-star"></i>
+                            <i class="@if($product->ratings->avg('rating') >= 2 ) text-yellow-400 @endif fa-solid fa-star"></i>
                         </label>
                         <label>
-                            <i class="cursor-pointer @if($product->ratings->avg('rating') >= 3 ) text-yellow-400 @endif fa-solid fa-star"></i>
+                            <i class="@if($product->ratings->avg('rating') >= 3 ) text-yellow-400 @endif fa-solid fa-star"></i>
                         </label>
                         <label>
-                            <i class="cursor-pointer @if($product->ratings->avg('rating') >= 4 ) text-yellow-400 @endif fa-solid fa-star"></i>
+                            <i class="@if($product->ratings->avg('rating') >= 4 ) text-yellow-400 @endif fa-solid fa-star"></i>
                         </label>
                         <label>
-                            <i class="cursor-pointer @if($product->ratings->avg('rating') >= 5 ) text-yellow-400 @endif fa-solid fa-star"></i>
+                            <i class="@if($product->ratings->avg('rating') >= 5 ) text-yellow-400 @endif fa-solid fa-star"></i>
                         </label>
                         <div class="text-xs text-gray-500 ml-3">{{count($product->ratings)}}</div>
                     </div>

@@ -11,6 +11,7 @@ use App\Services\cartService;
 class ProductPage extends Component
 {
     public $slug;
+    public $rating;
 
     public function addToCart($productId)
     {
@@ -60,6 +61,6 @@ class ProductPage extends Component
         $grade2 = $product->ratings->where('rating', '=', '2')->count();
         $grade1 = $product->ratings->where('rating', '=', '1')->count();
 
-        return view('product-page', compact('product', 'relatedProducts', 'total', 'grade5', 'grade4', 'grade3', 'grade2', 'grade1'));
+        return view('livewire.product-page', compact('product', 'relatedProducts', 'total', 'grade5', 'grade4', 'grade3', 'grade2', 'grade1'));
     }
 }
