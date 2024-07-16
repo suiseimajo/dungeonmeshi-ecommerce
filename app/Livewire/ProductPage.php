@@ -5,6 +5,7 @@ namespace App\Livewire;
 use Livewire\Component;
 use App\Models\Product;
 use Livewire\Attributes\Layout;
+use App\Models\Rating;
 use App\Services\cartService;
 
 class ProductPage extends Component
@@ -21,6 +22,23 @@ class ProductPage extends Component
         $cartService->addToCart($productId);
 
         $this->dispatch('open-modal', 'success-addtocart'); 
+        }
+    }
+
+    public function saveRate($productId)
+    {
+        if (!auth()->check()) {
+            return Redirect()->route('login');
+        }
+
+        else {
+            $rate = new Rating;
+            $rate->rating = $this->rating;
+            $rate->product_id = $productId;
+            $rate->review = ' ';
+            $rate->user_id = auth()->id();
+            $rate->save();    
+            $this->dispatch('open-modal', 'success-rated'); 
         }
     }
 
