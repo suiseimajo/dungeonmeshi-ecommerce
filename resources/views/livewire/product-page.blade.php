@@ -21,7 +21,7 @@
             <h2 class="text-3xl font-medium uppercase mb-2">{{$product->nome}}</h2>
             <div class="flex items-center mb-4">
                 <div class="flex gap-1 text-sm">
-                <button type="button" wire:click="saveRate('{{$product->id}}')" wire:confirm="Avaliar esse produto?">
+                <button type="button" wire:click.once="saveRate('{{$product->id}}')" wire:confirm="Avaliar esse produto?">
                     <label for="star1">
                         <input class="hidden" wire:model.live="rating" type="radio" id="star1" name="rating" value="1" />
                         <i class="cursor-pointer @if($product->ratings->avg('rating') >= 1) text-yellow-400 @endif fa-solid fa-star"></i>
