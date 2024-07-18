@@ -65,4 +65,5 @@ class Cart extends Component
         $this->dispatch('open-modal', 'success-buy');
         session()->forget('shoppingCart');
     }
+    
 }

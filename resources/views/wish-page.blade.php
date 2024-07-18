@@ -23,21 +23,6 @@
                   </button>
               </form>
             </div>
-            <div class="mt-6 flex justify-between items-center">
-              <div class="flex justify-center items-center">
-                <p class="tracking-tight text-2xl font-semibold leading-6 text-gray-800"></p>
-              </div>
-              <div class="flex justify-center items-center">
-                <button aria-label="show menu" onclick="handleClick1(true)" class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 py-2.5 px-2 bg-gray-800 dark:bg-white dark:text-gray-800 text-white hover:text-gray-400 hover:bg-gray-200">
-                  <svg id="chevronUp1" class="fill-stroke" width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M9 5L5 1L1 5" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
-                  <svg id="chevronDown1" class="hidden fill-stroke" width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
-                </button>
-              </div>
-            </div>
             <div id="menu1" class="flex flex-col jusitfy-start items-start mt-12">
               <div>
                 <p class="tracking-tight text-xs leading-3 text-gray-800">Categoria</p>
@@ -48,7 +33,8 @@
                 @endforeach
               </div>
               <div class="mt-6">
-                <p class="tracking-tight text-base font-medium leading-4 text-gray-800">{{'R$' . number_format($favorite->preco/100, 2, ',', '.') }}</p>
+                <p class="tracking-tight text-xs leading-3 text-gray-800">Preço</p>
+                <p<a class="tracking-tight text-base font-medium leading-4 text-gray-800">{{'R$' . number_format($favorite->preco/100, 2, ',', '.') }}</p></a>
               </div>
               <div class="flex jusitfy-between flex-col lg:flex-row items-center mt-10 w-full space-y-4 lg:space-y-0 lg:space-x-4 xl:space-x-8">
                 <a href="{{ route('product-page', $favorite->slug) }}" class="w-full">
@@ -61,14 +47,14 @@
             </div>
           </div>
         @endforeach
-          <x-modal name="success-addtocart" focusable>
+        <x-modal name="success-favorite" focusable>
             <div class="p-6">
                 <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-                    {{ __('Carrinho') }}
+                    {{ __('Lista de Desejos') }}
                 </h2>
 
                 <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                    {{ __('Produto adicionado ao carrinho!') }}
+                    {{ __('Produto adicionado a sua lista de desejos!') }}
                 </p>
                 <div class="mt-6 flex justify-end">
                     <x-primary-button class="ms-3" x-on:click="$dispatch('close')">
@@ -76,6 +62,22 @@
                     </x-primary-button>
                 </div>
             </div>
+        </x-modal>
+        <x-modal name="success-addtocart" focusable>
+          <div class="p-6">
+              <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
+                  {{ __('Carrinho') }}
+              </h2>
+
+              <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                  {{ __('Produto adicionado ao carrinho!') }}
+              </p>
+              <div class="mt-6 flex justify-end">
+                  <x-primary-button class="ms-3" x-on:click="$dispatch('close')">
+                      {{ __('Ok!') }}
+                  </x-primary-button>
+              </div>
+          </div>
         </x-modal>
         </div>
       </div>
