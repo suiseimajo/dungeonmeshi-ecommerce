@@ -24,6 +24,20 @@ class Wishlist extends Component
         }
     }
 
+    public function removeFromCart($productId)
+    {
+
+        if (!auth()->check()) {
+            return Redirect()->route('login'); 
+        }
+        else {
+        $cartService = new cartService;
+        $cartService->removeFromCart($productId);
+
+        $this->dispatch('open-modal', 'success-removefromcart');
+        }
+    }
+
     #[Layout('layouts.site')] 
     public function render()
     {
