@@ -12,11 +12,12 @@
                         title="Visualizar Produto">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
-                    <a href="#"
-                        class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
+                    <button
+                        wire:click="saveWish('{{ $product->id }}')"
+                        class="{{auth()->user()?->favorites->contains('id', $product->id) ? 'text-red-800' : 'text-white'}} text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
                         title="Adicionar a Lista de Desejos">
                         <i class="fa-solid fa-heart"></i>
-                    </a>
+                    </button>
                 </div>
             </div>
             <div class="pt-4 pb-3 px-4 h-56">
@@ -52,10 +53,29 @@
                     @endforeach
                 </div>
             </div>
-            <button wire:click="addToCart('{{ $product->id }}')" class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Adicionar ao Carrinho</button>
-            <button wire:click="removeFromCart('{{ $product->id }}')" class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Remover do Carrinho</button>
+            @if(!isset(session('shoppingCart', [])[$product->id]))
+                <button wire:click.once="addToCart('{{ $product->id }}')" class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Adicionar ao Carrinho</button>
+            @else
+                <button wire:click.once="removeFromCart('{{ $product->id }}')" class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Remover do Carrinho</button>
+            @endif
         </div>
         @endforeach
+        <x-modal name="success-favorite" focusable>
+            <div class="p-6">
+                <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
+                    {{ __('Lista de Desejos') }}
+                </h2>
+
+                <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                    {{ __('Produto adicionado a sua lista de desejos!') }}
+                </p>
+                <div class="mt-6 flex justify-end">
+                    <x-primary-button class="ms-3" x-on:click="$dispatch('close')">
+                        {{ __('Ok!') }}
+                    </x-primary-button>
+                </div>
+            </div>
+        </x-modal>
          <x-modal name="success-rated" focusable>
             <div class="p-6">
                 <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
