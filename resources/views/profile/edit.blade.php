@@ -110,7 +110,7 @@
             <div class="shadow rounded bg-white px-4 pt-6 pb-8">
                 <div class="flex items-center justify-between mb-4">
                     <h3 class="font-medium text-gray-800 text-lg">Perfil Pessoal</h3>
-                    <a href="#" class="text-primary">Editar</a>
+                    <a href="{{route('usuarios.edit', $user->id)}}" class="text-primary">Editar</a>
                 </div>
                 <div class="space-y-1">
                     <h4 class="text-gray-700 font-medium">{{$user->name}}</h4>

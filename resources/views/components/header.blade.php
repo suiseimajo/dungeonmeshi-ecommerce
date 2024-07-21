@@ -53,7 +53,7 @@
                     <div class="text-xs leading-3">Lista de <br>Desejos</div>
                     <div
                         class="absolute right-0 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-primary text-white text-xs">
-                        {{ count(auth()->user()->favorites) }}</div>
+                        {{auth()->user() ? count(auth()->user()->favorites) : 0 }}</div>
                 </a>
                 <a href="{{route('cart')}}" class="text-center text-gray-700 hover:text-primary transition relative">
                     <div class="text-2xl">

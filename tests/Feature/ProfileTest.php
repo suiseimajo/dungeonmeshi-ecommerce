@@ -23,6 +23,8 @@ class ProfileTest extends TestCase
 
     public function test_profile_information_can_be_updated(): void
     {
+
+        $this->withoutExceptionHandling();
         $user = User::factory()->create();
 
         $response = $this
@@ -30,6 +32,7 @@ class ProfileTest extends TestCase
             ->patch('/profile', [
                 'name' => 'Test User',
                 'email' => 'test@example.com',
+                dd()
             ]);
 
         $response
