@@ -8,7 +8,7 @@
         @method('delete')
     </form>
 
-    <form method="post" enctype="multipart/form-data" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
+    <form method="post" enctype="multipart/form-data" action="{{ route('profile.update-image') }}" class="mt-6 space-y-6">
         @csrf
         @method('patch')
 
@@ -27,6 +27,7 @@
                 </button>
             </div>
         </div>
+        
 
         <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Salvar') }}</x-primary-button>

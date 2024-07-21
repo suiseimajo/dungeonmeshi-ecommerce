@@ -28,15 +28,14 @@ class ProfileTest extends TestCase
 
         $response = $this
             ->actingAs($user)
-            ->patch('/usuarios/'.$user->id, [
+            ->patch('/profile', [
                 'name' => 'Test User',
                 'email' => 'test@example.com',
-                'password' => '12345678',
-                'password_confirmation' => '12345678',
             ]);
 
         $response
-            ->assertSessionHasNoErrors();
+            ->assertSessionHasNoErrors()
+            ->assertRedirect('/profile');
 
         $user->refresh();
 

@@ -107,15 +107,20 @@
         <!-- info -->
         <div class="col-span-9 grid grid-cols-2 gap-4">
 
-            <div class="shadow rounded bg-white px-4 pt-6 pb-8">
-                <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center justify-between mb-4">
+            <form method="post" action="{{ route('profile.update') }}">
+                @csrf
+                @method('patch')
+                <div class="flex items-center justify-betweeen mb-4">
                     <h3 class="font-medium text-gray-800 text-lg">Perfil Pessoal</h3>
-                    <a href="{{route('usuarios.edit', $user->id)}}" class="text-primary">Editar</a>
+                    <button type="submit" class="text-primary">Editar</a>
                 </div>
                 <div class="space-y-1">
-                    <h4 class="text-gray-700 font-medium">{{$user->name}}</h4>
-                    <p class="text-gray-800">{{$user->email}}</p>
+                    <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus />
+                    <x-input-label for="email" value="Email" />
+                    <x-text-input id="email" name="email" type="text" class="mt-1 block w-full" :value="old('email', $user->email)" required autofocus />
                 </div>
+            </form>
             </div>
 
             <div class="shadow rounded bg-white px-4 pt-6 pb-8">
