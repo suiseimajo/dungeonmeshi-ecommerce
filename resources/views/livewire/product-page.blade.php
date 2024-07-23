@@ -14,7 +14,7 @@
     <!-- product-detail -->
     <div class="container grid grid-cols-2 gap-6">
         <div>
-            <img src="{{ Storage::url($product->imagem) }}" alt="product" class="w-full">
+            <img src="{{ $product->images->first() ? Storage::url($product->images->first()->imagem) : asset('imagens/470.jpg') }}" alt="{{$product->nome}}" class="w-full">
         </div>
 
         <div>
