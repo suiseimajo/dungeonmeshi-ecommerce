@@ -43,6 +43,7 @@ class ProductController extends Controller
         $product->slug = Str::slug($request->input('nome'));
         $product->preco = $request->input('preco');
         $product->descricao = $request->input('descricao');
+        $product->imagem = 'default_image.png';
         if ($request->hasFile('imagem')) {
             $filePath = Storage::disk('public')->put('images/produtos/imagens', request()->file('imagem'));
             $product->imagem = $filePath;

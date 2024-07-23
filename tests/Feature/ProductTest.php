@@ -24,7 +24,7 @@ class ProductTest extends TestCase
             ->actingAs($user)
             ->post('produtos', [
                 'nome' => 'Test Product',
-                'slug' => 'nome',
+                'slug' => 'test-product',
                 'preco' => '1000',
                 'imagem' => '',
                 'descricao' => 'guitar loneliness and blue planet'
@@ -32,7 +32,7 @@ class ProductTest extends TestCase
 
         $response
         ->assertSessionHasNoErrors()
-        ->assertRedirect('home');
+        ->assertRedirect('/');
 
         $product->refresh();
 
