@@ -41,7 +41,7 @@
                   <button class="focus:outline-none focus:ring-gray-800 focus:ring-offset-2 focus:ring-2 text-gray-800 w-full tracking-tight py-4 text-lg leading-4 hover:bg-gray-300 hover:text-gray-800 dark:bg-transparent dark:border-gray dark:hover:bg-gray-800 bg-white border border-gray-800 dark:hover:text-white">Mais Informações</button>
                 </a>
                 <div class="w-full">
-                @if(!isset(session('shoppingCart', [])[$product->id]))
+                @if(!isset(session('shoppingCart', [])[$favorite->id]))
                   <button wire:click="addToCart('{{ $favorite->id }}')" class="focus:outline-none focus:ring-gray-800 focus:ring-offset-2 focus:ring-2 text-white w-full tracking-tight py-4 text-lg leading-4 hover:bg-black bg-gray-800 border border-gray-800 dark:hover:bg-gray-700 dark:hover:text-white">Adicionar ao Carrinho</button>
                 @else
                   <button wire:click="removeFromCart('{{ $favorite->id }}')" class="focus:outline-none focus:ring-gray-800 focus:ring-offset-2 focus:ring-2 text-white w-full tracking-tight py-4 text-lg leading-4 hover:bg-black bg-gray-800 border border-gray-800 dark:hover:bg-gray-700 dark:hover:text-white">Remover do Carrinho</button>
