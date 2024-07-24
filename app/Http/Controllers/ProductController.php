@@ -98,7 +98,7 @@ class ProductController extends Controller
         $product->update();
 
         session()->flash('notif.success', 'Produto editado com sucesso!');
-        return redirect()->route('home');
+        return redirect()->route('produtos.index');
     }
 
     /**
