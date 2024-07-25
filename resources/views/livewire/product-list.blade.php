@@ -59,7 +59,7 @@
             @if(!isset(session('shoppingCart', [])[$product->id]))
                 <button wire:click.once="addToCart('{{ $product->id }}')" class="block w-full py-1 mt-8 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Adicionar ao Carrinho</button>
             @else
-                <button wire:click.once="removeFromCart('{{ $product->id }}')" class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Remover do Carrinho</button>
+                <button wire:click.once="removeFromCart('{{ $product->id }}')" class="block w-full py-1 mt-8 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Remover do Carrinho</button>
             @endif
             </div>
         @endforeach
