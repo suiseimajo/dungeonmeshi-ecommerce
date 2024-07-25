@@ -2,7 +2,7 @@
 <div class="h-full w-full object-cover">
     <div class="container pb-16">
         <h2 id="produtos" class="text-2xl font-medium text-gray-800 uppercase mb-6">novos pratos</h2>
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 truncate">
         @foreach ($products as $product)
             <div wire:key="{{ $product->id }}" class="bg-white shadow rounded overflow-hidden group">
                 <div class="relative">
@@ -57,9 +57,9 @@
                     </div>
                 </div>
             @if(!isset(session('shoppingCart', [])[$product->id]))
-                <button wire:click.once="addToCart('{{ $product->id }}')" class="block w-full py-1 mt-8 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Adicionar ao Carrinho</button>
+                <button wire:click.once="addToCart('{{ $product->id }}')" class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Adicionar ao Carrinho</button>
             @else
-                <button wire:click.once="removeFromCart('{{ $product->id }}')" class="block w-full py-1 mt-8 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Remover do Carrinho</button>
+                <button wire:click.once="removeFromCart('{{ $product->id }}')" class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Remover do Carrinho</button>
             @endif
             </div>
         @endforeach
