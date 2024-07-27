@@ -48,8 +48,8 @@
             </div>
             <div class="space-y-2">
                 <p class="space-x-2">
+                    <span class="text-black font-semibold">Categoria: </span>
                     @foreach ($product->categories as $category)
-                        <span class="text-black font-semibold">Categoria: </span>
                         <span class="text-gray-600">{{$category->nome}}</span>
                     @endforeach
                 </p>
@@ -126,7 +126,7 @@
         @else
         <div class="grid grid-cols-4 gap-6">
         @foreach ($relatedProducts as $product)
-            <div class="bg-white shadow rounded overflow-hidden group">
+            <div class="bg-white shadow rounded overflow-hidden group truncate">
                 <div class="relative">
                     <img src="{{ $product->images->first() ? Storage::url($product->images->first()->imagem) : asset('imagens/470.jpg') }}" alt="product 1" class="w-full">
                     <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center 
@@ -144,7 +144,7 @@
                     </div>
                 </div>
                 <div class="pt-4 pb-3 px-4 h-56">
-                    <a href="#">
+                    <a href="{{ route('product-page', $product->slug )}}">
                         <h4 class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">{{ $product->nome }}</h4>
                     </a>
                     <div class="flex items-baseline mb-1 space-x-2">
@@ -176,8 +176,11 @@
                         <a href="{{ route('category-page', $category->slug) }}" class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{{$category->nome}}</a>
                     @endforeach
                 </div>
-                <button wire:click="addToCart('{{ $product->id }}')" class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Adicionar ao Carrinho</button>
-                <button wire:click="removeFromCart('{{ $product->id }}')" class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Remover do Carrinho</button>
+            @if(!isset(session('shoppingCart', [])[$product->id]))
+                <button wire:click.once="addToCart('{{ $product->id }}')" class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Adicionar ao Carrinho</button>
+            @else
+                <button wire:click.once="removeFromCart('{{ $product->id }}')" class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Remover do Carrinho</button>
+            @endif
             </div>
         @endforeach
         </div>
