@@ -35,7 +35,7 @@
                         <tr>
                           <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-white sm:pl-0">{{$product->nome}}
                           <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-300">{{'R$' . number_format($product->preco/100, 2, ',', '.') }}</td>
-                          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-300"><img src="{{ $product->images->first() ? Storage::url($product->images->first()->imagem) : asset('imagens/470.jpg') }}" alt="product 1" class="w-40"></td>
+                          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-300"><img src="{{ $product->images->first() ? Storage::url($product->images->first()->imagem) : asset('imagens/470.jpg') }}" alt="product 1" class="w-40 h-full"></td>
                           <td class="relative whitespace-nowrap py-4 pl-100 pr-4 text-sm font-medium sm:pr-0">
                             <a href="{{route('produtos.show', $product->id)}}" class="text-indigo-400 hover:text-indigo-300">Exibir<span class="sr-only">Exibir</span></a>
                             <a href="{{route('produtos.edit', $product->id)}}" class="text-indigo-400 hover:text-indigo-300 ml-4">Editar<span class="sr-only">Editar</span></a>
@@ -50,6 +50,7 @@
                         <!-- More people... -->
                       </tbody>
                     </table>
+                    {{ $products->links() }}
                   </div>
                 </div>
               </div>

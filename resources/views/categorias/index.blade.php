@@ -33,7 +33,7 @@
                     @foreach ($categories as $category)
                         <tr>
                           <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-white sm:pl-0">{{$category->nome}}
-                          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-300"><img src="{{ Storage::url($category->imagem) }}" alt="product 1" class="w-40"></td>
+                          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-300"><img src="{{ Storage::url($category->imagem) }}" alt="product 1" class="w-40 h-full"></td>
                           <td class="relative whitespace-nowrap py-4 pl-100 pr-4 text-sm font-medium sm:pr-0">
                             <a href="{{route('categorias.show', $category->slug)}}" class="text-indigo-400 hover:text-indigo-300">Exibir<span class="sr-only">Exibir</span></a>
                             <a href="{{route('categorias.edit', $category->slug)}}" class="text-indigo-400 hover:text-indigo-300 ml-4">Editar<span class="sr-only">Editar</span></a>
@@ -48,6 +48,7 @@
                         <!-- More people... -->
                       </tbody>
                     </table>
+                    {{ $categories->links() }}
                   </div>
                 </div>
               </div>
