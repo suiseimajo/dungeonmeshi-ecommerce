@@ -113,9 +113,10 @@
                 @method('patch')
                 <div class="flex items-center justify-betweeen mb-4">
                     <h3 class="font-medium text-gray-800 text-lg">Perfil Pessoal</h3>
-                    <button type="submit" class="text-primary">Editar</a>
+                    <button type="submit" class="text-primary px-20">Editar</a>
                 </div>
                 <div class="space-y-1">
+                    <x-input-label for="nome" value="Nome" />
                     <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus />
                     <x-input-label for="email" value="Email" />
                     <x-text-input id="email" name="email" type="text" class="mt-1 block w-full" :value="old('email', $user->email)" required autofocus />
